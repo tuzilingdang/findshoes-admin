@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="article" catalog="whrsdb" class="com.model.Article">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="shoes" catalog="whrsdb" class="com.model.Shoes">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="online_store" catalog="whrsdb"
+		class="com.model.OnlineStore">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="users" catalog="whrsdb" class="com.model.Users">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="image" catalog="whrsdb" class="com.model.Image">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="brand" catalog="whrsdb" class="com.model.Brand">
+	<primary-key>
+		<generator class="assigned"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>
