@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+   <package name="users" extends="struts-default">
+     
+     <!-- 添加用户 -->
+     <action name="addUser" class="com.action.AddUserAction">
+       <interceptor-ref name="defaultStack"/>
+       <interceptor-ref name="fileUpload">
+         <param name="allowedTypes">
+           image/bmp,image/png,image/gif,image/jpeg,image/pjpeg 
+         </param>
+         <param name="maximumSize">404800</param>
+       </interceptor-ref>      
+       <!-- 动态设置Action的属性值 -->
+	   <param name="savePath">/images</param>  
+	   
+	   <result>/users-add.jsp</result>
+	   <result name="error">/users-add.jsp</result>
+     </action>
+     
+     <!-- 选择删除用户 -->
+<!--      <action name="delSelectUser" class="com.action.DelSelectUserAction">
+       <result>/users-search.jsp</result>
+       <result name="input">/users-search.jsp</result>
+     </action> -->
+     
+     <!-- 根据ID删除指定用户 -->
+<!--      <action name="deleteUser" class="com.action.DeleteUserAction">
+       <result>/users-search.jsp</result>
+     </action> -->
+     
+     <!--  查看所有用户-->
+<!--      <action name="findAllUser" class="com.action.SearchUserAction" method="findAll">
+        <result>/users-search.jsp</result>
+     </action>
+      -->
+     <!-- 搜索用户 -->
+     <action name="searchUser" class="com.action.SearchUserAction" method="searchUser">
+       <result>/users-search_result.jsp</result>
+       <result name="error">/users-search.jsp</result>
+     </action>
+     
+     <!-- 用户登陆 -->
+     <action name="userLogin" class="com.action.LoginAction">
+       <result name="success">/index.jsp</result>
+       <result name="error">/login.jsp</result>
+     </action>
+     
+     <!-- 用户注销 -->
+     <action name="userLogout" class="com.action.LogoutAction">
+       <result>/index.jsp</result>
+     </action>
+     
+     <!-- 验证码 -->
+     <action name="SecurityCodeImageAction" class="com.action.SecurityCodeImageAction">
+           <result name="success" type="stream">
+             <param name="contentType">image/jpeg</param>
+             <param name="inputName">imageStream</param>
+             <param name="bufferSize">2048</param>
+           </result>
+        </action>
+        
+     <!-- 分页显示用户 -->
+     <action name="showAction" class="com.action.ShowAction">
+       <result name="success">/users-search_all.jsp</result>
+     </action>
+   
+   <!-- 更新用户 -->
+<!--    <action name="updateUser" class="com.action.UpdateUserAction">
+     <result>/users-search.jsp</result>
+   </action> -->
+   
+   </package>
+</struts>
