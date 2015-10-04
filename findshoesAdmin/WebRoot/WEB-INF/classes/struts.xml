@@ -3,59 +3,53 @@
 <struts>
 
    <include file="struts-users.xml"></include> 
-
 	<package name="user" extends="struts-default">
-	<action name ="uploadImg" class ="com.action.uploadImgAction" >
-         <!-- 限制图片的格式和图片的大小 -->  
-            <interceptor-ref name="fileUpload">  
-                <param name="allowedTypes">  
-                  image/bmp,image/png,image/gif,image/jpeg,image/pjpeg  
-                </param>  
-            </interceptor-ref>  
+		<action name ="uploadImg" class ="com.action.uploadImgAction" >
+	         <!-- 限制图片的格式和图片的大小 -->  
+	            <interceptor-ref name="fileUpload">  
+	                <param name="allowedTypes">  
+	                  image/bmp,image/png,image/gif,image/jpeg,image/pjpeg  
+	                </param>  
+	            </interceptor-ref>  
+			<!--默认的拦截器，必须要写   -->
+	            <interceptor-ref name="defaultStack" />  
+	            
+	         <result name="success">/artadd-succ.jsp</result>
+	         <result name="error">/article-add.jsp</result>
+	     </action>
+	     
+		<action name="homeImgupload" class="com.action.homeImgAction" method="homeImgupload">
+		<!-- 限制图片的格式和图片的大小 -->  
+		    <interceptor-ref name="fileUpload">  
+		        <param name="allowedTypes">  
+		          image/bmp,image/png,image/gif,image/jpeg,image/pjpeg  
+		        </param>  
+		    </interceptor-ref>  
 		<!--默认的拦截器，必须要写   -->
-            <interceptor-ref name="defaultStack" />  
-            
-         <result name="success">/artadd-succ.jsp</result>
-         <result name="error">/article-add.jsp</result>
-     </action>
-     
-       <action name="homeImgupload" class="com.action.homeImgAction" method="homeImgupload">
-       <!-- 限制图片的格式和图片的大小 -->  
-            <interceptor-ref name="fileUpload">  
-                <param name="allowedTypes">  
-                  image/bmp,image/png,image/gif,image/jpeg,image/pjpeg  
-                </param>  
-            </interceptor-ref>  
-		<!--默认的拦截器，必须要写   -->
-            <interceptor-ref name="defaultStack" />  
-         <result name="success">/home.jsp</result>
-        </action>
-     
-<!--           	<action name="chBrand" class="com.action.brandAction" method="chBrand">
-	            <result name="success">/brand-succ.jsp
-	            </result>
-	        </action> -->
-     
-     	<action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
-         <result name="success">/shoes-succ.jsp</result>
-         <result name="error">/shoes-add.jsp</result>
-     </action>
-     
-     	<action name="goodsDetail" class="com.action.goodsAction" method="goodsDetail">
+		    <interceptor-ref name="defaultStack" />  
+		 <result name="success">/home.jsp</result>
+		</action>
+	     
+	     
+	     <action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
+	         <result name="success">/shoes-succ.jsp</result>
+	         <result name="error">/shoes-add.jsp</result>
+	     </action>
+	     
+	 	<action name="goodsDetail" class="com.action.goodsAction" method="goodsDetail">
 	        <result name="success">/p-detail.jsp</result>
 	        <!-- <result name="error">/ErrPage.jsp</result> -->
 	    </action>
-     
-       
-<!--      <action name ="searchGoods" class ="com.action.goodsAction" method="searchGoods" >         
-         <result name="success">/search-succ.jsp</result>
-         <result name="error">/search-err.jsp</result>
-     </action> -->
-     
-<!--      <action name ="deleSelect" class ="com.action.deleSelectAction" >
-     	<result name="success" >/article.jsp</result>
-     	<result name="success" type="json">/article.jsp</result>
-     </action> -->
+	          
+	<!-- <action name ="searchGoods" class ="com.action.goodsAction" method="searchGoods" >         
+	         <result name="success">/search-succ.jsp</result>
+	         <result name="error">/search-err.jsp</result>
+	     </action> -->
+	     
+	<!--      <action name ="deleSelect" class ="com.action.deleSelectAction" >
+	     	<result name="success" >/article.jsp</result>
+	     	<result name="success" type="json">/article.jsp</result>
+	     </action> -->
 	</package>
 	
 	<package name="ajaxDemo" extends="json-default">
@@ -84,30 +78,29 @@
 	        <result name="success" type="json"></result>
 	    </action>
 	    
-	   <action name ="searchGoods" class ="com.action.goodsAction" method="searchGoods" >         
-         <result name="success" type="json"></result>
+	    <action name ="searchGoods" class ="com.action.goodsAction" method="searchGoods" >         
+        	<result name="success" type="json"></result>
      	</action>
      	
      	<action name ="chgGoods" class ="com.action.goodsAction" method="chgGoods" >         
          <result name="success" type="json"></result>
      	</action>
      	
-			<!-- 批量上传 -->
-	     <action name="roleFileUpload" class="com.action.RoleFileAction">
-	       <interceptor-ref name="defaultStack"/>
-	       <interceptor-ref name="fileUpload">
-	       </interceptor-ref>       	   
-		   <result name="success">/shoes-batchadd-succ.jsp</result>
-		   <result name="input">/shoes-batchadd.jsp</result>
-	     </action>
-
+		<!-- 批量上传 -->
+		<action name="roleFileUpload" class="com.action.RoleFileAction">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>       	   
+			<result name="success">/shoes-batchadd-succ.jsp</result>
+			<result name="input">/shoes-batchadd.jsp</result>
+		</action>
 	</package>
 	
 	<package name="goods" extends="json-default">
-			 <action name="brandList" class="com.action.ajaxAction" method="brandList">
-	            <result type="json">
-	            </result>
-	        </action>
+		<action name="brandList" class="com.action.ajaxAction" method="brandList">
+            <result type="json">
+            </result>
+        </action>
 	        
    		<action name="delPub" class="com.action.ajaxAction" method="delPub">
            <result type="json">
