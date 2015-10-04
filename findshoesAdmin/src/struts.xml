@@ -51,7 +51,11 @@
 	        </action> 
      
      	<action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
+<<<<<<< HEAD
          <result name="success">/shoesadd-succ.jsp</result>
+=======
+         <result name="success">/shoes-succ.jsp</result>
+>>>>>>> april
          <result name="error">/shoes-add.jsp</result>
      </action>
      
