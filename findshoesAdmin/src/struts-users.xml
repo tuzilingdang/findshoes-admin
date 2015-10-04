@@ -2,7 +2,11 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
     "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-   <package name="users" extends="struts-default">
+   
+   <!-- 设置应用使用的解析码 -->
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+   
+   <package name="users" extends="struts-default,json-default">
      
      <!-- 添加用户 -->
      <action name="addUser" class="com.action.AddUserAction">
@@ -21,25 +25,34 @@
      </action>
      
      <!-- 选择删除用户 -->
-<!--      <action name="delSelectUser" class="com.action.DelSelectUserAction">
-       <result>/users-search.jsp</result>
-       <result name="input">/users-search.jsp</result>
-     </action> -->
+     <action name="delSelectUser" class="com.action.DelSelectUserAction">
+       <result>/users-search_result.jsp</result>
+     </action>
      
      <!-- 根据ID删除指定用户 -->
-<!--      <action name="deleteUser" class="com.action.DeleteUserAction">
-       <result>/users-search.jsp</result>
-     </action> -->
+     <action name="deleteUser" class="com.action.DeleteUserAction">
+       <result>/users-search_result.jsp</result>
+     </action>
      
      <!--  查看所有用户-->
-<!--      <action name="findAllUser" class="com.action.SearchUserAction" method="findAll">
-        <result>/users-search.jsp</result>
+     <action name="findAllUser" class="com.action.SearchUserAction" method="findAll">
+        <result>/users-search_result.jsp</result>
      </action>
-      -->
+     
      <!-- 搜索用户 -->
      <action name="searchUser" class="com.action.SearchUserAction" method="searchUser">
        <result>/users-search_result.jsp</result>
        <result name="error">/users-search.jsp</result>
+     </action>
+     
+     <!-- 分页显示所有用户 -->
+     <action name="findAllUsers" class="com.action.FindAllUsersAction" >
+       <result name="success">/users-search_all.jsp</result>
+     </action>
+     
+     <!-- 根据ID搜索用户 -->
+     <action name="searchUserById" class="com.action.SearchUserAction" method="searchUserById">
+       <result>/users-search_result.jsp</result>
      </action>
      
      <!-- 用户登陆 -->
@@ -61,16 +74,34 @@
              <param name="bufferSize">2048</param>
            </result>
         </action>
-        
-     <!-- 分页显示用户 -->
-     <action name="showAction" class="com.action.ShowAction">
-       <result name="success">/users-search_all.jsp</result>
-     </action>
    
    <!-- 更新用户 -->
-<!--    <action name="updateUser" class="com.action.UpdateUserAction">
-     <result>/users-search.jsp</result>
-   </action> -->
+   <action name="updateUser" class="com.action.UpdateUserAction">
+     <!--   <result name="success" type="chain">searchUserById</result> -->
+     <result name="success">/users-update.jsp</result>
+   </action>
+   
+   <!-- 检查用户ID是否唯一 -->
+   <action name="checkUserId" class="com.action.CheckUserAction" method="checkId" >
+      <result type="json">
+        <param name="root">IdMap</param>
+      </result>
+   </action>
+   
+   <!-- 检查用户邮箱是否唯一 -->
+   <action name="checkUserEmail" class="com.action.CheckUserAction" method="checkEmail">
+      <result type="json">
+        <param name="root">EmailMap</param>
+      </result>
+   </action>
+   
+   <!-- 检查用户联系方式是否唯一 -->
+   <action name="checkUserTel" class="com.action.CheckUserAction" method="checkTel">
+      <result type="json">
+        <param name="root">TelMap</param>
+      </result>
+   </action>
    
    </package>
+   
 </struts>

@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                  <%
             	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
             	    if(user==null){
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul class="nav nav-inline admin-nav">
                 <li class="active"><a href="index.jsp" class="icon-home"> 开始</a>
                <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
+               <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
                 <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
                <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
                 <li><a href="article.jsp" class="icon-cog"> 文章</a>          

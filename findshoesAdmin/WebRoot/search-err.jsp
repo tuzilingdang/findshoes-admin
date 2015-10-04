@@ -79,13 +79,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
          <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-                <li><a href="home.jsp" class="icon-file-text"> 首页</a>
+                <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a> -->
                 <li class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
             		<ul><li><a href="shoes-search.jsp">鞋子搜索</a></li><li  class="active"><a href="shoes-add.jsp">添加</a></li><li><a href="shoes-batchadd.jsp">批量添加</a></li></ul>
                 </li>
@@ -106,21 +106,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 
-<div class="admin">        
-	<div style="position:relative;padding-top:2em">
-         <table class="table table-hover" style="position:relative;table-layout:fixed;padding-top:1.5em">
- 			<tr style="width:995px;"> <th style="font-size:.9em" colspan="14"><strong>搜索结果</strong></th></tr>
-            <tr style="width:995px;height:100px;boder:none">
-                <th style="font-size:.9em" colspan="14"><h2 style="padding-left:20em;padding-bottom:45px;font-weight:300">对不起，没有您搜索的结果。</h2></th>
-            </tr>
-             <tr style="width:995px;">
-                <th colspan="14"><a href="shoes-search.jsp" target="#" style="padding-left:45em;font-size:.9em;color:#FF6600;font-weight:200">
-                	返回</a></th>
-            </tr>         
-          </table>
-  	</div>
-</div>
+<div class="admin">
+        
+		<div style="position:relative;padding-top:2em">
+             <table class="table table-hover" style="position:relative;table-layout:fixed;padding-top:1.5em">
+             			<tr style="width:995px;"> <th style="font-size:.9em" colspan="14"><strong>搜索结果</strong></th></tr>
+                        <tr style="width:995px;height:100px;boder:none">
+                            <th style="font-size:.9em" colspan="14"><h2 style="padding-left:20em;padding-bottom:45px;font-weight:300">对不起，没有您搜索的结果。</h2></th>
+                        </tr>
+                         <tr style="width:995px;">
+                            <th colspan="14"><a href="shoes-search.jsp" target="#" style="padding-left:45em;font-size:.9em;color:#FF6600;font-weight:200">
+                            	返回</a></th>
+                        </tr>
+                      
+                    </table>
+<!--                     <ul>
+                    	<li></li>
+                    	<li></li>
+                    </ul> -->
+      	</div>
+      	
+      	
 
+		</div>
+	
+<!-- <h1 id="result">Click the pager below.</h1>
+<div id="pager" ></div> -->
 <input type=hidden name=contextPath value=<s:property value="shoes.goodsId" /> />
 <div class="hidden"><script src="http://s4.cnzz.com/stat.php?id=5952475&web_id=5952475" language="JavaScript"></script></div>
 

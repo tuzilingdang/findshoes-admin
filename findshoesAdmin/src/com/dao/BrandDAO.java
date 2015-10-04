@@ -30,19 +30,30 @@ public class BrandDAO extends BaseHibernateDAO {
 	public static final String IS_VISITED = "isVisited";
 	public static final String ONLINE = "online";
 
-	public void save(Brand transientInstance) {
+/*	public void save(Brand transientInstance) {
 		log.debug("saving Brand instance");
 		try {
-          	Transaction tran = getSession().beginTransaction();
-            getSession().save(transientInstance);
-            tran.commit();
-            getSession().close();
-            log.debug("save successful");
+			getSession().save(transientInstance);
+			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;
 		}
+	}*/
+	public void save(Brand transientInstance) {
+        log.debug("saving Brand instance");
+        try {
+        	Transaction ts = getSession().beginTransaction();
+            getSession().save(transientInstance);
+            ts.commit();
+			getSession().close();
+            log.debug("save successful");
+        } catch (RuntimeException re) {
+            log.error("save failed", re);
+            throw re;
+        }
 	}
+
 
 	public void delete(Brand persistentInstance) {
 		log.debug("deleting Brand instance");
@@ -88,6 +99,18 @@ public class BrandDAO extends BaseHibernateDAO {
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+	
+	public List findByBrandname(String propertyName, String prebrand) {
+		try {
+			String queryString = "from Brand as b where b.id.brandName = '"+ prebrand +"'";
+			Query queryObject = getSession().createQuery(queryString);
+			//queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);

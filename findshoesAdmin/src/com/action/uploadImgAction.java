@@ -30,14 +30,11 @@ public class uploadImgAction extends ActionSupport{
     private String caption;  
     public String img_abpath;
     
-    
-    
 	public Article article;
 	private  java.util.Date date = new java.util.Date(); 
 	Timestamp tmp_date = new Timestamp(date.getTime());
 /*	private  java.sql.Date sql_now = new java.sql.Date(date.getTime()); 
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");*/
-	
 
 	public Article getArticle() {
 		return article;
@@ -97,7 +94,7 @@ public class uploadImgAction extends ActionSupport{
 		article.setImgUrl(img_abpath);
 		/*article.setImgUrl(img_abpath);	*/
 		/*System.out.println(article.getArticalId());*/
-		System.out.println("kitty");
+		System.out.println("kiitty");
 		System.out.println(article.getTitle());
 		System.out.println(article.getContent());
 		System.out.println(article.getLead());
@@ -116,13 +113,14 @@ public class uploadImgAction extends ActionSupport{
 		article.setTopLevel(0);
 		System.out.println(article.getType());
 		
-		if(article.getType().equals("1")){
-			article.setType(article.getType());
+		/*if(article.getType().equals("1")){*/
+			/*article.setType(article.getType());*/
+		article.setType("1");
 			article.setKeywords(article.getKeywords());
-			System.out.println("b");
-		}
+			System.out.println("bbbbb");
+		/*}*/
 		
-		if (article.getType().equals("2")){
+/*		if (article.getType().equals("2")){
 			article.setType(article.getType());
 			article.setBwh(article.getBwh());
 			article.setShoeUrl(article.getShoeUrl());
@@ -131,8 +129,8 @@ public class uploadImgAction extends ActionSupport{
 			article.setFootType(article.getFootType());
 			article.setFootLength(article.getFootLength());
 			article.setFootWidth(article.getFootWidth());
-			System.out.println("a");
-		}
+			System.out.println("aaaaa");
+		}*/
 		
 
 		

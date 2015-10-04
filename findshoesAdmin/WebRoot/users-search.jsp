@@ -1,6 +1,6 @@
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
-<%@page import="com.model.Users"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@page import="com.model.Users"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -53,56 +53,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
-        <div class="admin-navbar">
+         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
-                 <%
-            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
-            	    if(user==null){
-            	   %>
-                    <a class="button button-little bg-yellow" href="login.jsp">登录</a>
-                   <%
+            	<a class="button button-little bg-main" href="#">前台首页</a>
+                <!-- 根据是否已登录显示登录或注册 -->
+            	<%
+            	  Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	  if(user==null){
+            	 %>
+                  <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                <%
                    }else{
-                  %>
-                    <a class="button button-little bg-yellow" href="userLogout">注销</a>
-                  <%
-                    }
-                  %>
+                 %>
+                   <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                <%
+                  }
+                 %>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
-               <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
-                <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
+                <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
+                </li>            
+               <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
+                <li><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
+                </li>
                <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
                 <li><a href="article.jsp" class="icon-cog"> 文章</a>
-                </li>            
+            	
                 <!-- <li><a href="store-err.jsp" class="icon-user"> 商店</a></li> -->
                 <li class="active"><a href="users-search.jsp" class="icon-file">用户</a>
-	           		<ul>
-		           		<li class="active"><a href="users-search.jsp">用户搜索</a></li>
-		           		<li ><a href="users-add.jsp">添加</a></li>
-	           		</ul>
+                    <ul><li   class="active"><a href="users-search.jsp">用户搜索</a></li>
+            			<li><a href="users-add.jsp">添加</a></li>
+            		</ul>
                 </li>
             </ul>
-       </div>
+        </div>
         <div class="admin-bread">
-             <%
-              if(user == null){
-             %>
-              <span>您好，请先登录</span>
-            <%
-               }else{
-            %>
-            <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
-            <%
-                }
-            %>
-            <ul class="bread">
-               <li><a href="index.jsp" class="icon-home"> 开始</a></li>
-               <li><a href="users-search.jsp">用户</a></li>
-               <li>用户搜索</li>
-            </ul>
+             <% if(user == null){ %>
+            <span>您好，请先登录</span>
+            <% }else{  %>
+             <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
+             <% } %>
+				<ul class="bread">
+					<li><a href="home.jsp" class="icon-home"> 开始</a></li>
+					<li><a href="users-search.jsp">用户</a></li>
+					<li>用户搜索</li>
+				</ul>
         </div>
     </div>
 </div>
@@ -116,32 +112,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="tab-panel active" id="tab-set">
         	<form method="post" class="form-x" action="searchUser">
    			 <div style="width:100%">
-				<div class="form-group1" style="float:left;;width:13.5rem">
+				<div class="form-group1" style="float:left;;width:17em">
                 	<p>用户ID <input style="float:right" type="text" name="userId" value=""/></p>	
                 	<p>昵称<input style="float:right" type="text" name="nick" value=""/></p>                   	 				                                                                                                            
                 </div>
                 
-                <div class="form-group2" style="float:left;position:relative;width:13.5rem;margin-left:3em;">               	
+                <div class="form-group2" style="float:left;position:relative;width:17em;margin-left:3em;">               	
  				    <p>联系方式<input style="float:right" type="text" name="tel" value=""/></p>
  				    <p>住址 <input style="float:right" type="text" name="address" value=""/></p> 				      				    				    				    
                 </div>
                 
-                <div class="form-group3" style="float:left;position:relative;width:13.5rem;margin-left:3em;">
+                <div class="form-group3" style="float:left;position:relative;width:17em;margin-left:3em;">
                 	<p>余额 <input style="float:right" type="text" name="balance" value=""/></p>
                 	<p>邮箱 <input style="float:right" type="text" name="email" value=""/></p>                                                  
                 </div>      
                 
-                <div class="form-group4" style="float:left;position:relative;width:13.5rem;margin-left:3em;">
+                <div class="form-group4" style="float:left;position:relative;width:17em;margin-left:3em;">
                    <p>用户等级<input style="float:right" type="text" name="vip" value=""/></p>
                    <p>注册时间 <input style="float:right" type="text" name="regTime" value=""/></p>
                 </div>                                           
                 
-                <div class="form-group5" style="float:left;position:relative;width:13.5rem;margin-left:3em;">
+                <div class="form-group5" style="float:left;position:relative;width:17em;margin-left:3em;">
                     <input type="submit" value="搜索"/>
                 </div>
 			 </div>                          
             </form>
-            <form action="showAction" method="post">
+            <form action="findAllUsers" method="post">
               <input type="submit" value="所有用户"/>
             </form>          
           </div>       

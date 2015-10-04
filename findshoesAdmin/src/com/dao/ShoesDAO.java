@@ -66,6 +66,19 @@ public class ShoesDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+/*	public void save(Shoes transientInstance) {
+		log.debug("saving Shoes instance");
+	    try {
+	    	Transaction ts = getSession().beginTransaction();
+	        getSession().save(transientInstance);
+	        ts.commit();
+			getSession().close();
+	        log.debug("save successful");
+	    } catch (RuntimeException re) {
+	        log.error("save failed", re);
+	        throw re;
+	    }
+	}*/
 
 	public void delete(Shoes persistentInstance) {
 		log.debug("deleting Shoes instance");
@@ -117,10 +130,22 @@ public class ShoesDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
-
-	public List findByBrand(Object brand) {
-		return findByProperty(BRAND, brand);
+	
+	public List findByBrand(String brandName) {
+		try {
+			String queryString = "from Shoes as model where model.brand = '"+brandName+"'";
+			Query queryObject = getSession().createQuery(queryString);
+			//queryObject.setParameter(0, value);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
 	}
+
+/*	public List findByBrand(Object brand) {
+		return findByProperty(BRAND, brand);
+	}*/
 
 	public List findByShowDate(Object showDate) {
 		return findByProperty(SHOW_DATE, showDate);

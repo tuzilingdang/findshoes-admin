@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                  <%
             	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
             	    if(user==null){

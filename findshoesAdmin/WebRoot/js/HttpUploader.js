@@ -1,3 +1,20 @@
+/*
+	版权所有 2009-2014 荆门泽优软件有限公司
+	保留所有权利
+	官方网站：http://www.ncmem.com
+	官方博客：http://www.cnblogs.com/xproer
+	产品首页：http://www.ncmem.com/webplug/http-uploader2/
+	在线演示：http://www.ncmem.com/products/http-uploader/demo2/index.html
+	开发文档：http://www.cnblogs.com/xproer/archive/2011/03/15/1984950.html
+	升级日志：http://www.cnblogs.com/xproer/archive/2011/03/15/1985091.html
+	示例下载：http://yunpan.cn/lk/sVMbJWKR2gfwm?sid=301
+	文档下载：http://yunpan.cn/lk/sVMbQ2a8qSMTa?sid=301
+	联系邮箱：1085617561@qq.com
+	联系QQ：1085617561
+	更新记录：
+		2009-11-05 创建
+		2014-02-28 使用jquery优化代码并增强兼容性。
+*/
 
 //删除元素值
 Array.prototype.remove = function(val)

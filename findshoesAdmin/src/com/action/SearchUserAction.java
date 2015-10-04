@@ -3,8 +3,6 @@ package com.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.fileupload.FileUpload;
-
 import com.dao.PageDAO;
 import com.dao.UsersDAO;
 import com.model.Users;
@@ -28,11 +26,9 @@ public class SearchUserAction extends ActionSupport {
 	// 更新用户传入的搜索ID
 	private String id;
 	private int pageNow = 1; // 初始化为1,默认从第一页开始显示
-	private int pageSize = 2; // 每页显示5条记录
+	private int pageSize = 5; // 每页显示5条记录
 	private int pageNum; // 页面总数
 	private int totalRows; // 记录总数
-	private List list;
-	private final int num = 5;
 
 	private PageDAO pageDAO = new PageDAO();
 	private UsersDAO userDAO = new UsersDAO();
@@ -69,13 +65,6 @@ public class SearchUserAction extends ActionSupport {
 		this.totalRows = totalRows;
 	}
 
-	public List getList() {
-		return list;
-	}
-
-	public void setList(List list) {
-		this.list = list;
-	}
 
 	public String getId() {
 		return id;
@@ -177,10 +166,6 @@ public class SearchUserAction extends ActionSupport {
 		//将搜索值存入searchValue中
 		searchValue.clear();
 		
-		//String newId = new String(userId.getBytes("iso-8859-1"),"utf-8");
-		//String newNick = new String(nick.getBytes("iso-8859-1"),"utf-8");
-		//String newAddress = new String(address.getBytes("iso-8859-1"),"utf-8");
-		
 		searchValue.add(userId);
 		searchValue.add(nick);
 		searchValue.add(tel);
@@ -191,28 +176,16 @@ public class SearchUserAction extends ActionSupport {
 		searchValue.add(regTime);
 		
 		
-        // 记录总条数
-		
+        // 记录总条数		
 		totalRows = pageDAO.SearchTotalRows(searchValue);
 		// 总共分多少页
 		if (totalRows % pageSize == 0) {
 			pageNum = totalRows / pageSize;
 		} else {
 			pageNum = totalRows / pageSize + 1;
-		}
+		}	
 		
-		list = new ArrayList();
-        
-		if(pageNum < 6){
-			for(int i=0;i<pageNum;i++){
-				list.add(i);
-			}
-		}else{
-			for(int i=0;i<num;i++){
-				list.add(i);
-			}
-		}		
-
+		//当前页的临界处理，若小于0则置于0，大于最大页则置最大页数
 		if (pageNow <= 0) {
 			pageNow = 1;
 		}
@@ -221,13 +194,14 @@ public class SearchUserAction extends ActionSupport {
 			pageNow = pageNum;
 		}
 		
+		//若搜索列表中有输入值就调用查询函数
 		boolean flag = false;
 		for (String str : searchValue) {
 			if (!("".equals(str)))
 				flag = true;
 		}
 		if (flag) {
-			users = userDAO.searchUser(searchValue, pageSize, pageNow);
+			users = userDAO.searchUser(searchValue,pageSize,pageNow);
 			return SUCCESS;
 		} else {
 			ActionContext.getContext().put("Tip", "请输入搜索条件");
@@ -238,10 +212,7 @@ public class SearchUserAction extends ActionSupport {
 	// 根据指定ID搜索用户
 	public String searchUserById() throws Exception {
 		UsersDAO userDAO = new UsersDAO();
-		// 编码转换
-		//String userId = new String(id.getBytes("iso-8859-1"), "utf-8");
 		users = userDAO.findUsersById(id);
 		return SUCCESS;
 	}
-
 }

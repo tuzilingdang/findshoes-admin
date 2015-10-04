@@ -19,6 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="css/Pager.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script src="js/jquery.pager.js" type="text/javascript"></script>
+    <!-- <script src="js/pintuer.js"></script> -->
+<!--     <script src="js/respond.js"></script>
+    <script src="js/admin.js"></script> -->
+    <link type="image/x-icon" href="http://www.pintuer.com/favicon.ico" rel="shortcut icon" />
+    <link href="http://www.pintuer.com/favicon.ico" rel="bookmark icon" />
     
     <style>
 		.td-url{/*text-overflow:ellipsis;*/white-space:nowrap;overflow: hidden}
@@ -110,6 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
   
     </script>
+
+    
 </head>
 
 <body onload="pageChg()">
@@ -121,12 +128,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
          <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
-                <li><a href="system.jsp" class="icon-home"> 系统</a>
+               <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
                 <li><a href="home.jsp" class="icon-file-text"> 首页</a>
                 <li class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
             		<ul><li   class="active"><a href="shoes-search.jsp">鞋子搜索</a></li><li><a href="shoes-add.jsp">添加</a></li><li><a href="shoes-batchadd.jsp">批量添加</a></li></ul>
@@ -206,7 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <div  style="display:block;margin-top:5em">
 				<s:form data-ajax="false" action=" chBrand.action" method="post" data-transition="slide" theme="simple">
 				  <div style="float:left;display:block"><label >输入新的品牌名称：</label> <input style="margin-left:1em;" type="text" id="newbrand" name="newbrand"  value="" /></div>
-				  <div style="float:left;display:block"><label > 输入新的品牌ID：</label> <input  style="margin-left:1.5em;" type="text" id="brandid" name="brandid" value="" /></div>
+				  <!-- <div style="float:left;display:block"><label > 输入新的品牌ID：</label> <input  style="margin-left:1.5em;" type="text" id="brandid" name="brandid" value="" /></div> -->
 				    <input style="width:-10px;height:-10px;" type="hidden"  id="prebrand" name="prebrand" value="<s:property value='#session.brand'/>" />
 					<input  class="button border-yellow button-little"  style="margin-left:20em;width:8em;height:3em;background:#f60;;color:#FFF;font-size:1.2em;border:none;border-radius:5px" 
 	             	type="submit"   value="修正品牌" /><!-- onclick="chBrand()" -->
@@ -239,7 +246,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$.ajax({
 	    	type:"GET",
 	        url:"chBrand.action",
-	        data:{"brand":brandName,"newbrand":newbrand,"brandid":brandid},
+	        data:{"prebrand":brandName,"newbrand":newbrand},
 	        dataType:"json",
 	        success:function(){
 	        	 window.location.reload();
@@ -253,19 +260,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  }
 	
 	
-	  function goFirst(){
-	  	goPage(1);
-	  }
-
-	  function goEnd(){
-	  	var num = document.getElementById("record").value;
-	  	if (parseInt(num)%10 ==0)
-	  		var pageNo = Math.floor(parseInt(num)/10) ;
-	  	if (parseInt(num)%10 !=0)
-	  		var pageNo = Math.floor(parseInt(num)/10) +1;
-	  		alert(pageNo);
-	  		goPage(pageNo);
-	  }
+  function goFirst(){
+  	goPage(1);
+  }
+  function goEnd(){
+  	var num = document.getElementById("record").value;
+  	if (parseInt(num)%10 ==0)
+  		var pageNo = Math.floor(parseInt(num)/10) ;
+  	if (parseInt(num)%10 !=0)
+  		var pageNo = Math.floor(parseInt(num)/10) +1;
+  		alert(pageNo);
+  		goPage(pageNo);
+  }
 		
 	function seleChg(){
 		var num =  document.getElementById("pageNo").value;
@@ -368,7 +374,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 
 
-		function goPage(num){
+function goPage(num){
 			if(num == 1){
 			 var pstPageNo = document.getElementById("input1").value;
 			 alert(pstPageNo);
@@ -387,7 +393,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       var pstPageNo = num; 
 			
 			var brand = document.getElementById("map_str").value;
-
+			/* alert(search_data); */
+/* 			var pager = new Array();
+			pager= "${request.pageModel}";  */
+/* 			var totalList;
+			var showShoesList = new Array();;
+			totalList = '${pageModel.list}';
+			
+       	    var pageSize = '${pageModel.getPageSize()}';
+			var start = (pstPageNo-1)*pageSize+1;
+			var end = pstPageNo*pageSize;
+			alert(end); 
+	 	for (var i = start; i < end; i++){
+			showShoesList[i] = '${totalList.get(i)}';
+			alert("hey");
+			alert(typeof(totalList.get(i)));
+		}   */
+/* 		alert("hey");
+		alert(typeof(totalList.get(i))); */
+		/* window.self.location="search-succ.jsp?showShoesList = '${showShoesList}'";  */
+			
 		 	$.ajax({
 				url:"brandList.action",
 				type:"post",
@@ -419,6 +444,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
 				document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
 			}
+/* 	
+			var pageNo = document.getElementById("input1").value;
+			if (parseInt(document.getElementById("input1").value) < parseInt(totalNo)){
+				document.getElementById("input1").value= parseInt(pageNo)+parseInt(5);
+				document.getElementById("input2").value= parseInt(pageNo)+parseInt(6);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(7);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
+			}
+				
+			else{
+				document.getElementById("input1").value = totalNo;
+				document.getElementById("input2").value= "";
+				document.getElementById("input3").value= "";
+				document.getElementById("input4").value= "";
+				document.getElementById("input5").value= "";
+				}
+				
+			/* document.getElementById("input1").value=pageNo; */
+	/*		if (parseInt(document.getElementById("input2").value) >= parseInt(totalNo)){
+				document.getElementById("input2").value= totalNo;
+				document.getElementById("input3").value=  "";
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value= "";			
+			}
+			if (parseInt(document.getElementById("input3").value) >= parseInt(totalNo)){
+				document.getElementById("input3").value= totalNo;
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value=  "";			
+			}
+			if (parseInt(document.getElementById("input4").value) >= parseInt(totalNo)){
+				document.getElementById("input4").value= totalNo;
+				document.getElementById("input5").value=  "";			
+			} */
+
+
 		}
 		
 		function MinusPageno(){
@@ -462,5 +523,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script> 
  
 </body>
+    
+<!-- 
+<SCRIPT language=javascript>
+	function GoPage(Myself)
+	{
+		var Lmyself=Myself.replace(".html","")
+		if (document.formpage.SkipPage.value == 1)
+			{window.location.href=Myself;} //绝对路径可自己设置
+		else{
+			window.location.href=Lmyself+"_"+document.formpage.SkipPage.value+".html";
+		}
+	}
+	
+	
+</SCRIPT> -->
 </html>
     

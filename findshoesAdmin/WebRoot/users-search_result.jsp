@@ -1,6 +1,6 @@
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
-<%@page import="com.model.Users"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@page import="com.model.Users"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -52,56 +52,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
-        <div class="admin-navbar">
+         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
-                 <%
-            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
-            	    if(user==null){
-            	   %>
-                    <a class="button button-little bg-yellow" href="login.jsp">登录</a>
-                   <%
+            	<a class="button button-little bg-main" href="#">前台首页</a>
+                <%
+                  Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	  if(user==null){
+            	 %>
+                  <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                <%
                    }else{
-                  %>
-                    <a class="button button-little bg-yellow" href="userLogout">注销</a>
-                  <%
-                    }
-                  %>
+                 %>
+                   <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                <%
+                  }
+                 %>
             </span>
             <ul class="nav nav-inline admin-nav">
-                <li><a href="index.jsp" class="icon-home"> 开始</a>
-               <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
-                <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
-               <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
-                <li><a href="article.jsp" class="icon-cog"> 文章</a>
-                </li>            
-                <!-- <li><a href="store-err.jsp" class="icon-user"> 商店</a></li> -->
-                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a>
-	           		<ul>
-		           		<li class="active"><a href="users-search.jsp">用户搜索</a></li>
-		           		<li ><a href="users-add.jsp">添加</a></li>
-	           		</ul>
+                <li><a href="index.jsp" class="icon-home"> 开始</a></li>
+                <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a></li> -->
+                <li ><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
+            		<ul>
+            		  <li class="active"><a href="users-search.jsp">用户搜索</a></li>
+            		  <li><a href="users-add.jsp">添加</a></li>
+            		</ul>
                 </li>
+                <li><a href="article.jsp" class="icon-file-text"> 文章</a></li>
+                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a></li>
             </ul>
-       </div>
+        </div>
         <div class="admin-bread">
-             <%
+            <%
               if(user == null){
              %>
-              <span>您好，请先登录</span>
+            <span>您好，请先登录</span>
             <%
-               }else{
-            %>
-            <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
-            <%
-                }
-            %>
-            <ul class="bread">
-               <li><a href="index.jsp" class="icon-home"> 开始</a></li>
-               <li><a href="users-search.jsp">用户</a></li>
-               <li>用户搜索</li>
-            </ul>
+              }else{
+             %>
+             <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
+             <%
+              }
+              %>
+				<ul class="bread">
+					<li><a href="home.jsp" class="icon-home"> 开始</a></li>
+					<li><a href="users-search.jsp">用户</a></li>
+					<li>用户搜索</li>
+				</ul>
         </div>
     </div>
 </div>
@@ -139,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 </div>
              <input type="submit" value="搜索" />                  
             </form>
-            <form action="showAction" method="post" id="showForm">
+            <form action="findAllUsers" method="post" id="showForm">
               <input type="submit" value="所有用户">
             </form>
           </div>       
@@ -149,7 +145,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
 		    <form action="delSelectUser" method="post" id="delForm">
              <table class="table table-hover" style="position:relative;table-layout:fixed;padding-top:1.5em">
-             			<tr style="width:995px;"> <th style="font-size:.9em" colspan="14"><strong>搜索结果</strong></th></tr>
+             			<tr style="width:995px;"> 
+             			  <th style="font-size:.9em" colspan="14"><strong>搜索结果</strong></th>
+             			</tr>
                         <tr style="width:995px;">
                             <th width="5">选择</th>    
                             <th width="10">序号</th>   
@@ -180,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <td><s:property value="vip" /></td> 
                             <td><s:property value="defunct" /></td>                            
                             <td><a class="button border-blue button-little" href="users-update.jsp?id=${s.userId}">修改</a>
-                                <a class="button border-yellow button-little" href="deleteUser?id=${s.userId}" }">删除</a>
+                                <a class="button border-yellow button-little" href="deleteUser?id=${s.userId}" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
                             </td>
                          </tr>   
                        </s:iterator>                                           

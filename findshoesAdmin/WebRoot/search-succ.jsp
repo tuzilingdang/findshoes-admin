@@ -124,13 +124,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
          <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-                <li><a href="home.jsp" class="icon-file-text"> 首页</a>
+               <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a> -->
                 <li class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
             		<ul><li   class="active"><a href="shoes-search.jsp">鞋子搜索</a></li><li><a href="shoes-add.jsp">添加</a></li><li><a href="shoes-batchadd.jsp">批量添加</a></li></ul>
                 </li>
@@ -348,7 +348,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 
 
-		function goPage(num){
+function goPage(num){
 			if(num == 1){
 			 var pstPageNo = document.getElementById("input1").value;
 			 alert(pstPageNo);
@@ -367,6 +367,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       var pstPageNo = num; 
 			
 			var search_data = document.getElementById("map_str").value;
+			/* alert(search_data); */
+/* 			var pager = new Array();
+			pager= "${request.pageModel}";  */
+/* 			var totalList;
+			var showShoesList = new Array();;
+			totalList = '${pageModel.list}';
+			
+       	    var pageSize = '${pageModel.getPageSize()}';
+			var start = (pstPageNo-1)*pageSize+1;
+			var end = pstPageNo*pageSize;
+			alert(end); 
+	 	for (var i = start; i < end; i++){
+			showShoesList[i] = '${totalList.get(i)}';
+			alert("hey");
+			alert(typeof(totalList.get(i)));
+		}   */
+/* 		alert("hey");
+		alert(typeof(totalList.get(i))); */
+		/* window.self.location="search-succ.jsp?showShoesList = '${showShoesList}'";  */
 			
 		 	$.ajax({
 				url:"goPage.action",
@@ -399,6 +418,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
 				document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
 			}
+/* 	
+			var pageNo = document.getElementById("input1").value;
+			if (parseInt(document.getElementById("input1").value) < parseInt(totalNo)){
+				document.getElementById("input1").value= parseInt(pageNo)+parseInt(5);
+				document.getElementById("input2").value= parseInt(pageNo)+parseInt(6);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(7);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
+			}
+				
+			else{
+				document.getElementById("input1").value = totalNo;
+				document.getElementById("input2").value= "";
+				document.getElementById("input3").value= "";
+				document.getElementById("input4").value= "";
+				document.getElementById("input5").value= "";
+				}
+				
+			/* document.getElementById("input1").value=pageNo; */
+	/*		if (parseInt(document.getElementById("input2").value) >= parseInt(totalNo)){
+				document.getElementById("input2").value= totalNo;
+				document.getElementById("input3").value=  "";
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value= "";			
+			}
+			if (parseInt(document.getElementById("input3").value) >= parseInt(totalNo)){
+				document.getElementById("input3").value= totalNo;
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value=  "";			
+			}
+			if (parseInt(document.getElementById("input4").value) >= parseInt(totalNo)){
+				document.getElementById("input4").value= totalNo;
+				document.getElementById("input5").value=  "";			
+			} */
 		}
 		
 		function MinusPageno(){
@@ -443,5 +496,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
 </body>
     
+<!-- 
+<SCRIPT language=javascript>
+	function GoPage(Myself)
+	{
+		var Lmyself=Myself.replace(".html","")
+		if (document.formpage.SkipPage.value == 1)
+			{window.location.href=Myself;} //绝对路径可自己设置
+		else{
+			window.location.href=Lmyself+"_"+document.formpage.SkipPage.value+".html";
+		}
+	}
+	
+	
+</SCRIPT> -->
 </html>
     

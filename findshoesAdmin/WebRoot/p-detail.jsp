@@ -103,13 +103,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
          <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav"  >
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-                <li><a href="home.jsp" class="icon-file-text"> 首页</a>
+               <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a> -->
                 <li class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
             		<ul><li><a href="shoes-search.jsp">鞋子搜索</a></li><li  class="active"><a href="shoes-add.jsp">添加</a></li><li><a href="shoes-batchadd.jsp">批量添加</a></li></ul>
                 </li>
@@ -171,6 +171,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        </tr>        
 					    </thead>
 					    
+		<!-- 			    <tfoot>
+					    	<tr>
+					        	<th scope="row">All modes</th>
+					            <td><s:property value="showDetail.brandName" /></td>
+					            <td><s:property value="showDetail.goodId" /></td>
+					            <td>27</td>
+					            <td>39</td>
+					            <td>20</td>
+					            <td>23</td>
+					        </tr>
+					    </tfoot> -->
 					    
 					    <tbody>
 					    	<tr>
@@ -351,6 +362,29 @@ function openPop2()
 
    </script>
    
+<!--    	<style>
+a { color: #07c; text-decoration: none; border: 0; background-color: transparent; }
+  q, iframe, form { margin: 0; padding: 0; } 
+img, fieldset { border: none 0; }
+textarea { word-break: break-all; word-wrap: break-word; line-height:1.6; } 
+input, textarea, select, button { margin: 0; font-size: 14px; font-family: Tahoma, SimSun, sans-serif; }
+
+ol li,ul li{ margin-bottom:0.5em;}
+pre, code { font-family: "Courier New", Courier, monospace; word-wrap:break-word; line-height:1.4; font-size:12px;}
+pre{background:#f6f6f6; border:#eee solid 1px; margin:1em 0.5em; padding:0.5em 1em;}
+#content { padding-left:50px; padding-right:50px; }
+#content h2 { font-size:20px; color:#069; padding-top:8px; margin-bottom:8px; }
+#content h3 { margin:8px 0; font-size:14px; COLOR:#693; }
+#content h4 { margin:8px 0; font-size:16px; COLOR:#690; }
+#content div.item { margin-top:10px; margin-bottom:10px; padding:10px; }
+hr { clear:both; margin:7px 0; +margin: 0;
+border:0 none; font-size: 1px; line-height:1px; color: #069; background-color:#069; height: 1px; }
+.infobar { background:#fff9e3;  color:#743e04; }
+.buttonStyle{width:64px;height:22px;line-height:22px;color:#369;text-align:center;background:url(images/buticon.gif) no-repeat left top;border:0;font-size:12px;}
+.buttonStyle:hover{background:url(images/buticon.gif) no-repeat left -23px;}
+
+</style>
+    -->
 </body>
     
 

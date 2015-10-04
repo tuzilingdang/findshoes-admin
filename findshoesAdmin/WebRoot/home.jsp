@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <div class="mainer">
 	        <div class="admin-navbar">
 	            <span class="float-right">
-	            	<a class="button button-little bg-main" >前台首页</a>
+	            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
 	                 <%
 	            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
 	            	    if(user==null){
@@ -77,9 +77,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <ul class="nav nav-inline admin-nav">
 	                <li><a href="index.jsp" class="icon-home"> 开始</a>
 	                <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-	               <li  class="active"><a href="home.jsp" class="icon-file-text"> 首页</a> 
+	              <!--  <li  class="active"><a href="home.jsp" class="icon-file-text"> 首页</a> 
 	               			<ul><li><a href="home.jsp">轮播图管理</a></li></ul>
-	               </li>
+	               </li> -->
+	              <!--  <li><a href="brand-mng.jsp" class="icon-file-text"> 品牌管理</a> </li> -->
 	                <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
 	               <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
 	                <li ><a href="article.jsp" class="icon-cog"> 文章</a>
@@ -332,57 +333,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  		var totalNo = Math.floor(parseInt(num)/10) +1;
 		var pageNo = document.getElementById("input1").value;
 		if (parseInt(pageNo) <= parseInt(totalNo)){
-			document.getElementById("input1").value= parseInt(pageNo)+parseInt(5);
-			document.getElementById("input2").value= parseInt(pageNo)+parseInt(6);
-			document.getElementById("input3").value= parseInt(pageNo)+parseInt(7);
-			document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
-		}
+		document.getElementById("input1").value= parseInt(pageNo)+parseInt(5);
+		document.getElementById("input2").value= parseInt(pageNo)+parseInt(6);
+		document.getElementById("input3").value= parseInt(pageNo)+parseInt(7);
+		document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
+		document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
 	}
-		
-	function MinusPageno(){
-		var pageNo = document.getElementById("input1").value;
-		if(pageNo > 5){
-			document.getElementById("input1").value= parseInt(pageNo)-parseInt(5);
-			document.getElementById("input2").value= parseInt(pageNo)+parseInt(1)-parseInt(5);
-			document.getElementById("input3").value= parseInt(pageNo)+parseInt(2)-parseInt(5);
-			document.getElementById("input4").value= parseInt(pageNo)+parseInt(3)-parseInt(5);
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(4)-parseInt(5);
-		}
-		else
-		  pageNo = 1;			
-	}
-		
-	function checkNum(articalId){
-		var defunct = document.getElementsByName("hidden-defunct");
-		alert(defunct.length);
-		var num = 0;
-		for (var i = 0; i < parseInt(defunct.length); i++){
-		    if(defunct[i].value=="Y")
-				num ++;
-		}
-    	if(num > 4){
-    		alert("首页轮播图不能超过5个");     		
-    	 	return false;
-    	}
-    	else{
-    		//$("#form1").submit();
-    		$.ajax({
-				url:"homePub.action",
-				type:"post",
-				dataType:"json",
-				data:{"articalId":articalId},
-				success:function(){	
-					$("#form1").submit();		  
-				    document.location.herf = "home.jsp"; 
-				},
-				error:function(XMLHttpRequest, textStatus, errorThrown){
-					        alert(XMLHttpRequest.status);
-	                        alert(XMLHttpRequest.readyState);
-	                        alert(textStatus);
+/* 	
+			var pageNo = document.getElementById("input1").value;
+			if (parseInt(document.getElementById("input1").value) < parseInt(totalNo)){
+				document.getElementById("input1").value= parseInt(pageNo)+parseInt(5);
+				document.getElementById("input2").value= parseInt(pageNo)+parseInt(6);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(7);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(8);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(9);
+			}
+				
+			else{
+				document.getElementById("input1").value = totalNo;
+				document.getElementById("input2").value= "";
+				document.getElementById("input3").value= "";
+				document.getElementById("input4").value= "";
+				document.getElementById("input5").value= "";
 				}
-			}); 		
-    	}		
+				
+			/* document.getElementById("input1").value=pageNo; */
+	/*		if (parseInt(document.getElementById("input2").value) >= parseInt(totalNo)){
+				document.getElementById("input2").value= totalNo;
+				document.getElementById("input3").value=  "";
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value= "";			
+			}
+			if (parseInt(document.getElementById("input3").value) >= parseInt(totalNo)){
+				document.getElementById("input3").value= totalNo;
+				document.getElementById("input4").value=  "";
+				document.getElementById("input5").value=  "";			
+			}
+			if (parseInt(document.getElementById("input4").value) >= parseInt(totalNo)){
+				document.getElementById("input4").value= totalNo;
+				document.getElementById("input5").value=  "";			
+			} */
+		}
+		
+		function MinusPageno(){
+			var pageNo = document.getElementById("input1").value;
+			if(pageNo > 5){
+				document.getElementById("input1").value= parseInt(pageNo)-parseInt(5);
+				document.getElementById("input2").value= parseInt(pageNo)+parseInt(1)-parseInt(5);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(2)-parseInt(5);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(3)-parseInt(5);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(4)-parseInt(5);
+			}
+			else
+			  pageNo = 1;			
+		}
+		
+		function checkNum(articalId){
+			var defunct = document.getElementsByName("hidden-defunct");
+			alert(defunct.length);
+			var num = 0;
+			for (var i = 0; i < parseInt(defunct.length); i++){
+			    if(defunct[i].value=="Y")
+					num ++;
+			}
+        	if(num > 4){
+        		alert("首页轮播图不能超过5个");     		
+        	 	return false;
+        	}
+        	else{
+        		//$("#form1").submit();
+        		$.ajax({
+					url:"homePub.action",
+					type:"post",
+					dataType:"json",
+					data:{"articalId":articalId},
+					success:function(){	
+						$("#form1").submit();		  
+					    document.location.herf = "home.jsp"; 
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown){
+						        alert(XMLHttpRequest.status);
+		                        alert(XMLHttpRequest.readyState);
+		                        alert(textStatus);
+					}
+				}); 		
+        	}		
 		}
 </script> 
  

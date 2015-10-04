@@ -19,6 +19,20 @@
          <result name="error">/article-add.jsp</result>
      </action>
      
+     	<action name ="fileloadImg" class ="com.action.fileloadImgAction" >
+         <!-- 限制图片的格式和图片的大小 -->  
+            <interceptor-ref name="fileUpload">  
+                <param name="allowedTypes">  
+                  image/bmp,image/png,image/gif,image/jpeg,image/pjpeg  
+                </param>  
+            </interceptor-ref>  
+		<!--默认的拦截器，必须要写   -->
+            <interceptor-ref name="defaultStack" />  
+            
+         <result name="success">/artadd-succ.jsp</result>
+         <result name="error">/article-add.jsp</result>
+     </action>
+     
        <action name="homeImgupload" class="com.action.homeImgAction" method="homeImgupload">
        <!-- 限制图片的格式和图片的大小 -->  
             <interceptor-ref name="fileUpload">  
@@ -31,10 +45,10 @@
          <result name="success">/home.jsp</result>
         </action>
      
-<!--           	<action name="chBrand" class="com.action.brandAction" method="chBrand">
+          	<action name="chBrand" class="com.action.brandAction" method="chBrand">
 	            <result name="success">/brand-succ.jsp
 	            </result>
-	        </action> -->
+	        </action> 
      
      	<action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
          <result name="success">/shoes-succ.jsp</result>
@@ -56,6 +70,7 @@
      	<result name="success" >/article.jsp</result>
      	<result name="success" type="json">/article.jsp</result>
      </action> -->
+     
 	</package>
 	
 	<package name="ajaxDemo" extends="json-default">

@@ -1,6 +1,10 @@
 package com.action;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -107,6 +111,10 @@ public class shoesAction extends ActionSupport{
 	        shoes.setFlag(1);
 	        shoes.setDefunct(true); //1 ==N
 	        
+	        
+	        Date date=new Date();
+	        Timestamp nousedate = new Timestamp(date.getTime());
+	        shoes.setModifiedTime(nousedate);
 /*	        onlinestore.setDefunct("N");
 	        onlinestore.setGoodsId(shoes.getGoodsId());
 	        onlinestore.setPrice(onlinestore.getPrice());

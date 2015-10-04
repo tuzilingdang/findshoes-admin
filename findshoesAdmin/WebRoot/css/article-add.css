@@ -6,6 +6,16 @@
  * e-mail: admin@uimaker.com
  */
 *{font-size:9pt;border:0;margin:0;padding:0;}
+/* body{font-family:'微软雅黑'; margin:0 auto;min-width:980px;}
+ul{display:block;margin:0;padding:0;list-style:none;}
+li{display:block;margin:0;padding:0;list-style: none;}
+img{border:0;}
+dl,dt,dd,span{margin:0;padding:0;display:block;}
+a,a:focus{text-decoration:none;color:#000;outline:none;blr:expression(this.onFocus=this.blur());}
+a:hover{color:#00a4ac;text-decoration:none;}
+table{border-collapse:collapse;border-spacing: 0;}
+cite{font-style:normal;}
+h2{font-weight:normal;} */
 
 /*cloud*/
 
@@ -43,6 +53,10 @@
 .topleft{height:88px;background:url(../images/topleft.jpg) no-repeat;float:left; width:300px;}
 .topleft img{margin-top:12px;margin-left:10px;}
 .topright{height:88px;background:url(../images/topright.jpg) no-repeat right;float:right;}
+/* .nav{float:left;}
+.nav li{float:left;width:87px;height:88px; text-align:center;}
+.nav li a{display:block;width:87px;height:88px;-moz-transition: none; transition: background-color 0.3s linear; -moz-transition: background-color 0.3s linear; -webkit-transition: background-color 0.3s linear; -o-transition: background-color 0.3s linear; }
+.nav li a.selected{background:url(../images/navbg.png) no-repeat;} */
 .nav li a:hover{display:block;background:#000;color:#fff;background: none repeat scroll 0% 0% rgb(43, 127, 181);}
 .nav li img{margin-top:10px;}
 .nav li a{display:block;}

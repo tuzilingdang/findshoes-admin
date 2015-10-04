@@ -1,7 +1,6 @@
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
-<%@page import="com.model.Users"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.opensymphony.xwork2.ActionContext"%>
+<%@page import="com.model.Users"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
@@ -23,10 +22,14 @@
 		<title>女鞋后台管理-后台管理</title>
 		<link rel="stylesheet" href="css/pintuer.css">
 		<link rel="stylesheet" href="css/admin.css">
-		<script src="js/jquery.js"></script>
-		<script src="js/pintuer.js"></script>
-		<script src="js/respond.js"></script>
-		<script src="js/admin.js"></script>
+		<script src="js/jquery.js">
+</script>
+		<script src="js/pintuer.js">
+</script>
+		<script src="js/respond.js">
+</script>
+		<script src="js/admin.js">
+</script>
 		<link type="image/x-icon" href="http://www.pintuer.com/favicon.ico"
 			rel="shortcut icon" />
 		<link href="http://www.pintuer.com/favicon.ico" rel="bookmark icon" />
@@ -59,66 +62,64 @@
     </SCRIPT>
 	<body onload="check();">
 	<input type="hidden" value="<%= request.getAttribute("Tip") %>" id="hide">
-<div class="lefter">
-    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
-</div>
-<div class="righter nav-navicon" id="admin-nav">
-    <div class="mainer">
-        <div class="admin-navbar">
-            <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
-                 <%
-            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
-            	    if(user==null){
-            	   %>
-                    <a class="button button-little bg-yellow" href="login.jsp">登录</a>
-                   <%
+		<div class="lefter">
+			<div class="logo">
+				<a style="font-size: large" href="http://www.pintuer.com"
+					target="_blank"><strong>女鞋后台管理系统</strong> </a>
+			</div>
+		</div>
+		<div class="righter nav-navicon" id="admin-nav">
+			<div class="mainer">
+				<div class="admin-navbar">
+			      <span class="float-right"> 
+					<a class="button button-little bg-main" href="#">前台首页</a> 
+				<!-- 根据是否已登录显示登录或注册 -->
+            	<%
+            	  Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	  if(user==null){
+            	 %>
+                  <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                <%
                    }else{
-                  %>
-                    <a class="button button-little bg-yellow" href="userLogout">注销</a>
-                  <%
-                    }
-                  %>
-            </span>
+                 %>
+                   <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                <%
+                  }
+                 %>
+                 </span>
             <ul class="nav nav-inline admin-nav">
-                <li><a href="index.jsp" class="icon-home"> 开始</a>
-               <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
-                <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
-               <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
-                <li><a href="article.jsp" class="icon-cog"> 文章</a>
-                </li>            
-                <!-- <li><a href="store-err.jsp" class="icon-user"> 商店</a></li> -->
-                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a>
-	           		<ul>
-		           		<li class="active"><a href="users-search.jsp">用户搜索</a></li>
-		           		<li ><a href="users-add.jsp">添加</a></li>
-	           		</ul>
+                <li><a href="index.jsp" class="icon-home"> 开始</a></li>
+                <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a></li> -->
+                <li ><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
+            		<ul>
+            		  <li class="active"><a href="users-search.jsp">用户搜索</a></li>
+            		  <li><a href="users-add.jsp">添加</a></li>
+            		</ul>
                 </li>
+                <li><a href="article.jsp" class="icon-file-text"> 文章</a></li>
+                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a></li>
             </ul>
-       </div>
-        <div class="admin-bread">
-             <%
-              if(user == null){
-             %>
-              <span>您好，请先登录</span>
-            <%
-               }else{
-            %>
-            <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
-            <%
+			</div>
+			<div class="admin-bread">
+				<%
+                  if(user == null){
+                %>
+                <span>您好，请先登录</span>
+               <%
+                 }else{
+               %>
+                  <span>您好，<%= user.getUserId() %>，欢迎您的光临</span>
+               <%
                 }
-            %>
-            <ul class="bread">
-               <li><a href="index.jsp" class="icon-home"> 开始</a></li>
-               <li><a href="users-search.jsp">用户</a></li>
-               <li>所有用户</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
+               %>
+				<ul class="bread">
+					<li><a href="home.jsp" class="icon-home"> 开始</a></li>
+					<li><a href="users-search.jsp">用户</a></li>
+					<li>用户搜索</li>
+				</ul>
+			</div>				
+		 </div>
+       </div>
 		<div class="admin">
 			<strong>用户搜索</strong>
 			<div class="tab">
@@ -179,7 +180,7 @@
 								</div>
 								<input type="submit" value="搜索" />
 							</form>
-							    <form action="showAction" method="post">
+							    <form action="findAllUsers" method="post">
 							       <input type="submit" value="所有用户">
 							    </form>
 						</div>
@@ -267,7 +268,8 @@
 								<a class="button border-blue button-little"
 									href="users-update.jsp?id=${s.userId}">修改</a>
 								<a class="button border-yellow button-little"
-									href="deleteUser?id=${s.userId}">删除</a>
+									href="deleteUser?id=${s.userId}"
+									onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a>
 							</td>
 						</tr>
 					</s:iterator>
@@ -283,24 +285,24 @@
 			</div>
 
 			<s:if test="pageNow > 1">
-				<s:url id="url_pre" value="showAction">
+				<s:url id="url_pre" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow-1"></s:param>
 				</s:url>
 			</s:if>
 			<s:else>
-				<s:url id="url_pre" value="showAction">
+				<s:url id="url_pre" value="findAllUsers">
 					<s:param name="pageNow" value="1"></s:param>
 				</s:url>
 			</s:else>
 
 
 			<s:if test="pageNow < pageNum">
-				<s:url id="url_next" value="showAction">
+				<s:url id="url_next" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow+1"></s:param>
 				</s:url>
 			</s:if>
 			<s:else>
-				<s:url id="url_next" value="showAction">
+				<s:url id="url_next" value="findAllUsers">
 					<s:param name="pageNow" value="pageNum"></s:param>
 				</s:url>
 			</s:else>
@@ -310,7 +312,7 @@
             
              <!-- 
 			<s:iterator value="list" status="status">
-				<s:url id="url" value="showAction">
+				<s:url id="url" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow+#status.getIndex()" />
 				</s:url>
 				<s:a href="%{url}">
@@ -319,7 +321,7 @@
 			</s:iterator> 
 			 -->
 			    <s:if test="pageNow-2 >= 1">
-			      <s:url id="url_1" value="showAction">
+			      <s:url id="url_1" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow-2" />
 				  </s:url>
 				  <s:a href="%{url_1}">
@@ -328,7 +330,7 @@
 				</s:if>
 				
 				<s:if test="pageNow-1 >= 1">
-			      <s:url id="url_2" value="showAction">
+			      <s:url id="url_2" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow-1" />
 				  </s:url>
 				  <s:a href="%{url_2}">
@@ -336,7 +338,7 @@
 				  </s:a>
 				</s:if>
 				
-				<s:url id="url_3" value="showAction">
+				<s:url id="url_3" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow" />
 				</s:url>
 				<s:a href="%{url_3}">
@@ -344,7 +346,7 @@
 				</s:a>
 				
 				<s:if test="pageNow+1 <= pageNum">
-				  <s:url id="url_4" value="showAction">
+				  <s:url id="url_4" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow+1" />
 				  </s:url>
 				  <s:a href="%{url_4}">
@@ -353,7 +355,7 @@
 				</s:if>
 				
 				<s:if test="pageNow+2 <= pageNum">
-				  <s:url id="url_5" value="showAction">
+				  <s:url id="url_5" value="findAllUsers">
 					<s:param name="pageNow" value="pageNow+2" />
 				  </s:url>
 				  <s:a href="%{url_5}">
@@ -370,11 +372,11 @@
 			
 			
 			<div style="position:relative;float:right">
-                <form action="showAction" name="formpage">
+                <form action="findAllUsers" name="formpage">
                     第<input name='pageNow' onKeyDown='if(event.keyCode==13)event.returnValue=false' 
                     onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的 页数并且必须为整数！');this.value='1';}"
                     style='width: 20px;text-align:center' type='text' value='1' id="goPage">页 
-                    <input name='submitSkip' type="submit"  value='转到' >
+                    <input name='submitSkip' type="submit"  value='转到' onclick="return check();">
                 </form>
        	    </div>
 		</div>
@@ -403,20 +405,7 @@
 				language="JavaScript">
 </script>
 		</div>
-		<script type="text/javascript">
-/*		$(function() { 
- $("#checkall").click(function() { 
- $("input[@name='id']").each(function() { 
- $(this).attr("checked", true); 
- }); 
- }); 
- $("#delcheckall").click(function() { 
- $("input[@name='id']").each(function() { 
- $(this).attr("checked", false); 
- }); 
- }); 
- }); */
-
+<script type="text/javascript">
 function check(){
   var num = document.getElementById("goPage").value; 
   var pageNum = <s:property value='pageNum'/>;
@@ -456,16 +445,4 @@ function checkAllaction(obj) {
 </script>
 	</body>
 
-
-	<SCRIPT language=javascript>
-	function GoPage(Myself)
-	{
-		var Lmyself=Myself.replace(".html","")
-		if (document.formpage.SkipPage.value == 1)
-			{window.location.href=Myself;} //绝对路径可自己设置
-		else{
-			window.location.href=Lmyself+"_"+document.formpage.SkipPage.value+".html";
-		}
-	}		
-</SCRIPT>
 </html>

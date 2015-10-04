@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
@@ -19,6 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="css/Pager.css" rel="stylesheet" type="text/css" />
     <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script src="js/jquery.pager.js" type="text/javascript"></script>
+    <!-- <script src="js/pintuer.js"></script> -->
+<!--     <script src="js/respond.js"></script>
+    <script src="js/admin.js"></script> -->
     <link type="image/x-icon" href="http://www.pintuer.com/favicon.ico" rel="shortcut icon" />
     <link href="http://www.pintuer.com/favicon.ico" rel="bookmark icon" />
     
@@ -31,48 +34,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			line-height:12px;display:block;transition:all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s; background-color:#fff}		
 	</style>
 
-   <script language="javascript" type="text/javascript">		
-        function  showval(){  
-		    var args = new Array();
-			var thisURL = document.URL;    
-				var  getval =thisURL.split('?')[1]; 
-			alert(getval); 		
-			
-		$.ajax({
-			url:"findArticle.action",
-			type:"post",
-			dataType:"json",
-			data:{"getval":getval},
-			success:function(data){
-				if(data!=null)
-				 	alert("ajax success");  
-				alert(data.article.); 
-			},
-			error:function(XMLHttpRequest, textStatus, errorThrown){
-				        alert(XMLHttpRequest.status);
-                        alert(XMLHttpRequest.readyState);
-                        alert(textStatus);
-			}
-		}); 				
-			}  
-	    </script>             
+       <script language="javascript" type="text/javascript">		
+            function  showval(){  
+			    var args = new Array();
+				var thisURL = document.URL;    
+ 				var  getval =thisURL.split('?')[1]; 
+				alert(getval); 		
+				
+			$.ajax({
+				url:"findArticle.action",
+				type:"post",
+				dataType:"json",
+				data:{"getval":getval},
+				success:function(data){
+					if(data!=null)
+					 	alert("ajax success");  
+					alert(data.article.); 
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					        alert(XMLHttpRequest.status);
+	                        alert(XMLHttpRequest.readyState);
+	                        alert(textStatus);
+				}
+			}); 				
+  			}  
+   	    </script>         
+
+    
 </head>
 
 <body onload="showval()">
 <div class="lefter">
-    <div class="logo"><a style="font-size:large" ><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
          <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
+              <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
                 <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
                <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
                 <li class="active"><a href="article.jsp" class="icon-cog"> 文章</a>
@@ -107,6 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </tr>
                       
                     </table>
+<!--                     <ul>
+                    	<li></li>
+                    	<li></li>
+                    </ul> -->
       	</div>
       	
       	
