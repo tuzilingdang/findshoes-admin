@@ -41,14 +41,15 @@ public class chgPublishAction extends ActionSupport{
         String s[] = array.split(",");
         /*System.out.println(s.length);*/
 
-        for(String stemp:s){ 
+/*        for(String stemp:s){ 
         	System.out.println(stemp);
-        }
+        }*/
+        System.out.println("s.length");
         if (s.length > 0){
+        	System.out.println("s.length");
         	for(int i = 0; i < s.length; i++){
         		int id = Integer.parseInt(s[i]);
         		article = articleDao.findById(id);
-                
                 if(val == "1"){
                 	article.setStatus(1); // 1Îªpublish,2 Îª´ýÉóºË×´Ì¬
                 }
@@ -81,13 +82,14 @@ public class chgPublishAction extends ActionSupport{
 		String array =  request.getParameter("array");
 		String val = request.getParameter("val");
         System.out.println(val);
+        System.out.println("val");
         String s[] = array.split(",");
         /*System.out.println(s.length);*/
         for(String stemp:s){ 
         	System.out.println(stemp);
         }
       /*  */
-        
+        System.out.println("s.length");
         if (s.length > 0){
         	for(int i = 0; i < s.length; i++){
         		String id = s[i];
@@ -98,6 +100,7 @@ public class chgPublishAction extends ActionSupport{
                 if(val.equals("2") ){
                 	shoes.setFlag(0); // 1Îªpublish,2 Îª´ýÉóºË×´Ì¬
                 }
+                System.out.println(s.length);
 /*                else 
                 	return ERROR;*/
                 shoesDao.save(shoes);
@@ -112,6 +115,7 @@ public class chgPublishAction extends ActionSupport{
 //        pw.print(string); 
 //        pw.flush(); 
 //        pw.close();
+        System.out.println("valsss");
         return SUCCESS;
     }
 	

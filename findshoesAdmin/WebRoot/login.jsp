@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="xs6 xm4 xs3-move xm4-move">
             <br /><br />
             <div class="media media-y">
-                <a  style="font-size:24px;font-weight:24px;font-family:microsoft YaHei">女鞋后台管理系统</a>
+                <a href="http://www.baidu.com" target="_blank" style="font-size:24px;font-weight:24px;font-family:microsoft YaHei">女鞋后台管理系统</a>
             </div>
             <br /><br />
             <form action="userLogin" method="post" >
@@ -61,30 +61,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="panel-foot text-center"><button class="button button-block bg-main text-big">登录后台</button></div>
             </div>
             </form>
+            
+       <script type="text/javascript">
+         window.onload = function(){
+         var verifyObj = document.getElementById("Verify");
+         verifyObj.onclick=function(){
+           this.src ="SecurityCodeImageAction?timestamp="+new Date().getTime();
+           alert(document.getElementById("hide").value);
+          };       
+        }     
+        
+        function checkCode(){
+          var code_user = document.getElementById("code").value;
+          var code_session = document.getElementById("hide").value;
+          if(code_user == code_session){
+             return true;
+          }else{
+            alert("验证码错误！");
+            return false;
+          }
+        }      
+       </script>
+            
         </div>
     </div>
 </div>
 
 <div class="hidden"><script src="http://s4.cnzz.com/stat.php?id=5952475&web_id=5952475" language="JavaScript"></script></div>
-<script type="text/javascript">
-   window.onload = function(){
-   var verifyObj = document.getElementById("Verify");
-   verifyObj.onclick=function(){
-     this.src ="SecurityCodeImageAction?timestamp="+new Date().getTime();
-     alert(document.getElementById("hide").value);
-    };       
-  }     
-  
-  function checkCode(){
-    var code_user = document.getElementById("code").value;
-    var code_session = document.getElementById("hide").value;
-    if(code_user == code_session){
-       return true;
-    }else{
-      alert("验证码错误！");
-      return false;
-    }
-  }      
-</script>
 </body>
 </html>

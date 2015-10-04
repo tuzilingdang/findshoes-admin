@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
@@ -47,82 +47,82 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     .select-group{float:right}
 	</style>
 	
-    <script type="text/javascript" language="javascript">
-	  function skipPage(){
-		alert("num");
-		var num = document.getElementById("skip").value;
-		
-		var pstPageNo = num;
-		alert( pstPageNo);
-		var search_data = document.getElementById("map_str").value;
-		alert( search_data);
-		$.ajax({
-			url:"goPage.action",
-			type:"post",
-			dataType:"json",
-			data:{"pstPageNo":pstPageNo,"search_data":search_data},
-			success:function(){
-				  alert("ajax success"); 
-				 location.reload();
-			  /*   window.self.location = "article.jsp"; */ 
-			},
-			error:function(XMLHttpRequest, textStatus, errorThrown){
-				        alert(XMLHttpRequest.status);
-                        alert(XMLHttpRequest.readyState);
-                        alert(textStatus);
-			}
-		});  
-	 }
-
-    function pageChg(){			
-         var pageNo = document.getElementById("pageNo").value;
-           /* 	alert(pageNo); */
-         if (parseInt(pageNo)%5 == 1){
-         	 $("#input1").css("background","#E0FFFF")	;
-			document.getElementById("input1").value= parseInt(pageNo);
-			document.getElementById("input2").value= parseInt(pageNo)+parseInt(1);
-			document.getElementById("input3").value= parseInt(pageNo)+parseInt(2);
-			document.getElementById("input4").value= parseInt(pageNo)+parseInt(3);
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(4);
-         }
-         if (parseInt(pageNo)%5 == 2){
-         	 $("#input2").css("background","#E0FFFF")	;
-			document.getElementById("input1").value= parseInt(pageNo)-parseInt(1);
-			document.getElementById("input2").value= parseInt(pageNo);
-			document.getElementById("input3").value= parseInt(pageNo)+parseInt(1);
-			document.getElementById("input4").value= parseInt(pageNo)+parseInt(2);
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(3);
-         }
-    	 
-    	 if (parseInt(pageNo)%5 == 3){
-         	 $("#input3").css("background","#E0FFFF")	;
-			document.getElementById("input1").value= parseInt(pageNo)-parseInt(2);
-			document.getElementById("input2").value= parseInt(pageNo)-parseInt(1);
-			document.getElementById("input3").value= parseInt(pageNo);
-			document.getElementById("input4").value= parseInt(pageNo)+parseInt(1);
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(2);
-         }
-         
-         if (parseInt(pageNo)%5 == 4){
-         	 $("#input4").css("background","#E0FFFF")	;
-			document.getElementById("input1").value= parseInt(pageNo)-parseInt(3);
-			document.getElementById("input2").value= parseInt(pageNo)-parseInt(2);
-			document.getElementById("input3").value= parseInt(pageNo)-parseInt(1);
-			document.getElementById("input4").value= parseInt(pageNo)
-			document.getElementById("input5").value= parseInt(pageNo)+parseInt(1);
-         }
-         
-           if (parseInt(pageNo)%5 == 0){
-           /*  alert("go into page 10"); */
-         	 $("#input5").css("background","#E0FFFF")	;
-			document.getElementById("input1").value= parseInt(pageNo)-parseInt(4);
-			document.getElementById("input2").value= parseInt(pageNo)-parseInt(3);
-			document.getElementById("input3").value= parseInt(pageNo)-parseInt(2);
-			document.getElementById("input4").value= parseInt(pageNo)-parseInt(1);;
-			document.getElementById("input5").value= parseInt(pageNo);
-         }         
-    }
-</script>  
+	    <script type="text/javascript" language="javascript">
+		  function skipPage(){
+			alert("num");
+			var num = document.getElementById("skip").value;
+			
+			var pstPageNo = num;
+			alert( pstPageNo);
+			var search_data = document.getElementById("map_str").value;
+			alert( search_data);
+			$.ajax({
+				url:"goPage.action",
+				type:"post",
+				dataType:"json",
+				data:{"pstPageNo":pstPageNo,"search_data":search_data},
+				success:function(){
+					  alert("ajax success"); 
+					 location.reload();
+				  /*   window.self.location = "article.jsp"; */ 
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					        alert(XMLHttpRequest.status);
+	                        alert(XMLHttpRequest.readyState);
+	                        alert(textStatus);
+				}
+			});  
+		}
+ 
+        function pageChg(){			
+             var pageNo = document.getElementById("pageNo").value;
+               /* 	alert(pageNo); */
+             if (parseInt(pageNo)%5 == 1){
+             	 $("#input1").css("background","#E0FFFF")	;
+				document.getElementById("input1").value= parseInt(pageNo);
+				document.getElementById("input2").value= parseInt(pageNo)+parseInt(1);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(2);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(3);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(4);
+             }
+             if (parseInt(pageNo)%5 == 2){
+             	 $("#input2").css("background","#E0FFFF")	;
+				document.getElementById("input1").value= parseInt(pageNo)-parseInt(1);
+				document.getElementById("input2").value= parseInt(pageNo);
+				document.getElementById("input3").value= parseInt(pageNo)+parseInt(1);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(2);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(3);
+             }
+        	 
+        	 if (parseInt(pageNo)%5 == 3){
+             	 $("#input3").css("background","#E0FFFF")	;
+				document.getElementById("input1").value= parseInt(pageNo)-parseInt(2);
+				document.getElementById("input2").value= parseInt(pageNo)-parseInt(1);
+				document.getElementById("input3").value= parseInt(pageNo);
+				document.getElementById("input4").value= parseInt(pageNo)+parseInt(1);
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(2);
+             }
+             
+             if (parseInt(pageNo)%5 == 4){
+             	 $("#input4").css("background","#E0FFFF")	;
+				document.getElementById("input1").value= parseInt(pageNo)-parseInt(3);
+				document.getElementById("input2").value= parseInt(pageNo)-parseInt(2);
+				document.getElementById("input3").value= parseInt(pageNo)-parseInt(1);
+				document.getElementById("input4").value= parseInt(pageNo)
+				document.getElementById("input5").value= parseInt(pageNo)+parseInt(1);
+             }
+             
+               if (parseInt(pageNo)%5 == 0){
+               /*  alert("go into page 10"); */
+             	 $("#input5").css("background","#E0FFFF")	;
+				document.getElementById("input1").value= parseInt(pageNo)-parseInt(4);
+				document.getElementById("input2").value= parseInt(pageNo)-parseInt(3);
+				document.getElementById("input3").value= parseInt(pageNo)-parseInt(2);
+				document.getElementById("input4").value= parseInt(pageNo)-parseInt(1);;
+				document.getElementById("input5").value= parseInt(pageNo);
+             }         
+        }
+    </script>  
 	
 </head>
 
@@ -172,13 +172,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <div class="lefter">
-    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><strong>女鞋后台管理系统</strong></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                  <%
             	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
             	    if(user==null){
@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
+              <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
                 <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
                <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
                 <li class="active"><a href="article.jsp" class="icon-cog"> 文章</a>
@@ -260,7 +260,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input name="delselect" type="button" class="button button-small border-yellow" value="删除选中项" onclick="deleSelect()">
         
         <div class="panel-foot text-center">
-					<div class="page-group">		
+					<div class="page-group">
+			
            <%
 				//上一页
 				if(pageNow!=1){
@@ -276,6 +277,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			%>
            
+ <%--            <ul class="pagination pagination-group">
+           		 <li><button class="button-group"  onclick = " goFirst()" >首页</button></li>
+                <li><button class="button-group"  onclick = "MinusPageno()" >
+	                <%
+						//上一页
+						if(pageNow!=1){
+							out.println("<a href=article.jsp?pageNow="+(pageNow-1)+">上一页</a>");
+						}
+					%>
+				</button></li>
+                <li><input class="button-group" type="submit" id="input1" value="" onclick="goPage(1)"/>
+                 <%
+					for(int i=1;i<=pageCount;i++){
+						out.println("<a href=article.jsp?pageNow="+i+">["+i+"]</a>");
+					}
+				%>
+                </li>
+
+                <li><button class="button-group"  >
+				 <%
+                	if(pageNow!=pageCount){
+						out.println("<a href=article.jsp?pageNow="+(pageNow+1)+">下一页</a>");
+					}
+				 %>
+					</button></li>
+            </ul> 
+            <ul class="pagination"> <li><button class="button-group"  onclick = "goEnd()" >尾页</button></li></ul> --%>
        	   </div>
         </div>
     </div>
@@ -283,11 +311,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <div class="hidden"><script src="http://s4.cnzz.com/stat.php?id=5952475&web_id=5952475" language="JavaScript"></script></div>
-	<script type="text/javascript" language="javascript">
-		function goDetail(id){
-			document.location.href = "art-detail.jsp?"+id;
-		}
-		function deleSelect(){
+ <script type="text/javascript" language="javascript">
+ 	function goDetail(id){
+ 		document.location.href = "art-detail.jsp?"+id;
+ 	}
+	function deleSelect(){
 			/* var array = new Array(); //用于保存 选中文章ID */
 			var array ="";
 			var flag =false;
@@ -312,7 +340,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				alert("至少你要选择一个待删除记录"); 
 			}
 				
-				$.ajax({
+ 			$.ajax({
 				url:"deleSelect.action",
 				type:"post",
 				dataType:"json",
@@ -328,7 +356,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			}); 
 		}
-	</script>
+
+		function checkAllaction(obj)
+		{
+			for(var i=0;i<document.all.length;i++){
+				if (document.all(i).type=="checkbox"){
+					switch(obj){
+						case 1:document.all(i).checked=true;
+							break; //全选
+						case 2:document.all(i).checked=false;
+							break; //不选
+						case 3:{
+							if(document.all(i).checked==true){
+								document.all(i).checked=false;
+							}
+							else{
+								document.all(i).checked=true;
+							}
+						}
+							break; //反选
+					}
+				}
+			}
+		}
+ </script>
   	
 </body>   
 

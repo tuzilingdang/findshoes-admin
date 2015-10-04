@@ -2,6 +2,7 @@
 <%@page import="com.dao.UsersDAO"%>
 <%@page import="com.model.Users"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -52,32 +53,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="admin-navbar">
             <span class="float-right">
             	<a class="button button-little bg-main" href="#">前台首页</a>
-                <a class="button button-little bg-yellow" href="login.jsp">注销登录</a>
+                <!-- 根据是否已登录显示登录或注册 -->
+            	<%
+            	  Users users = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	  if(users==null){
+            	 %>
+                  <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                <%
+                   }else{
+                 %>
+                   <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                <%
+                  }
+                 %>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a></li>
-                <!-- <li><a href="system.jsp" class="icon-home"> 系统</a></li> -->
                <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a></li> -->
                 <li ><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
-            		<ul>
+                </li>
+                <li><a href="article.jsp" class="icon-file-text"> 文章</a></li>
+                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a>
+                	<ul>
             		  <li class="active"><a href="users-search.jsp">用户搜索</a></li>
-            		  <li  ><a href="users-add.jsp">添加</a></li>
-            		 <!--  <li><a href="users-batchadd.jsp">批量添加</a></li> -->
+            		  <li><a href="users-add.jsp">添加</a></li>
             		</ul>
                 </li>
-               <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
-                <li><a href="article.jsp" class="icon-file-text"> 文章</a></li>
-                <li><a href="#" class="icon-user"> 商店</a></li>
-                <li class="active"><a href="users-search.jsp" class="icon-file">用户</a></li>
             </ul>
         </div>
         <div class="admin-bread">
-            <span>您好，admin，欢迎您的光临。</span>
-            <ul class="bread">
-                <li><a href="index.html" class="icon-home"> 开始</a></li>
-                <li><a href="system.html">鞋子</a></li>
-                <li>添加</li>
-            </ul>
+            <%
+              if(users == null){
+             %>
+            <span>您好，请先登录</span>
+            <%
+              }else{
+             %>
+             <span>您好，<%= users.getUserId() %>，欢迎您的光临。</span>
+             <%
+              }
+              %>
+				<ul class="bread">
+					<li><a href="home.jsp" class="icon-home"> 开始</a></li>
+					<li><a href="users-search.jsp">用户</a></li>
+					<li>用户搜索</li>
+				</ul>
         </div>
     </div>
 </div>
@@ -123,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
               
              <input style="float:left;margin-top:4em;width:8em;height:2.5em;background:#F30;color:#FFF;font-size:1em;border:none;border-radius:5px" 
-                      type="submit" value="更新" />
+                      type="submit" value="更新" onclick="{if(confirm('确认修改?')){return true;}return false;}"/>
              </form>
            </div>
         

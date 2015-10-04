@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                  <%
             	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
             	    if(user==null){
@@ -60,9 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
-                <li><a href="system.jsp" class="icon-home"> 系统</a>
+                <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
                 </li>            
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
+               <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
                 <li   class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
             		<ul><li   class="active"><a href="shoes-search.jsp">鞋子搜索</a></li>
             			<li><a href="shoes-add.jsp">添加</a></li>
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<p>季节 <select style="float:right;width:11.2em" name="shSeason" disabled>
  							<option value="">无</option> <option value="春季">春季</option> <option value="秋季">秋季</option><option value="夏季">夏季</option> <option value="冬季">冬季</option>        
 					</select></p>   
-                	<p>内里材质 <input class="data" style="float:right" type="text" name="shInnerMaterial" value="" /></p>
+                	<!-- <p>内里材质 <input class="data" style="float:right" type="text" name="shInnerMaterial" value="" /></p> -->
  				    <p>制作工艺
                     	<select  style="float:right;width:11.2em"><option >无</option> <option value="胶黏鞋">胶黏鞋</option> <option value="手工缝制">手工缝制</option>
                         <option value="硫化鞋">硫化鞋</option>

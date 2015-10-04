@@ -25,6 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- <script src="js/pintuer.js"></script> -->
 <!--     <script src="js/respond.js"></script>
     <script src="js/admin.js"></script> -->
+    <link type="image/x-icon" href="http://www.pintuer.com/favicon.ico" rel="shortcut icon" />
+    <link href="http://www.pintuer.com/favicon.ico" rel="bookmark icon" />
     
     <style>
 		.td-url{/*text-overflow:ellipsis;*/white-space:nowrap;overflow: hidden}

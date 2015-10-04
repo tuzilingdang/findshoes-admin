@@ -1,9 +1,8 @@
-<%@page import="com.opensymphony.xwork2.ActionContext"%>
-<%@page import="com.model.Users"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@page import="org.springframework.web.context.request.SessionScope"%>
 <%@page import="org.springframework.web.context.request.RequestScope"%>
+<%@page import="com.model.Users"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -98,61 +97,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body onload="checkForm();">
 
-<input type="hidden" value="<%= request.getAttribute("Tip") %>" id="hide">
+<input type="hidden" value="<%= ActionContext.getContext().get("Tip") %>" id="hide">
 <div class="lefter">
-    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>&nbsp;女鞋后台管理系统</strong></a></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" >前台首页</a>
-                 <%
-            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
-            	    if(user==null){
-            	   %>
-                    <a class="button button-little bg-yellow" href="login.jsp">登录</a>
-                   <%
+            	<a class="button button-little bg-main" href="#">前台首页</a>
+                <!-- 根据是否已登录显示登录或注册 -->
+            	<%
+            	  Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	  if(user==null){
+            	 %>
+                  <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                <%
                    }else{
-                  %>
-                    <a class="button button-little bg-yellow" href="userLogout">注销</a>
-                  <%
-                    }
-                  %>
+                 %>
+                   <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                <%
+                  }
+                 %>
             </span>
             <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
-               <!--  <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <li><a href="home.jsp" class="icon-file-text"> 首页</a> 
-                <li><a href="shoes-search.jsp" class="icon-file-text"> 鞋子</a> </li>
+                <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
+                </li>            
+              <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
+                <li><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
+                </li>
                <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
                 <li><a href="article.jsp" class="icon-cog"> 文章</a>
-                </li>            
+            	
                 <!-- <li><a href="store-err.jsp" class="icon-user"> 商店</a></li> -->
                 <li class="active"><a href="users-search.jsp" class="icon-file">用户</a>
-	           		<ul>
-		           		<li><a href="users-search.jsp">用户搜索</a></li>
-		           		<li class="active"><a href="users-add.jsp">添加</a></li>
-	           		</ul>
+                    <ul><li><a href="users-search.jsp">用户搜索</a></li>
+            			<li class="active"><a href="users-add.jsp">添加</a></li>
+            		</ul>
                 </li>
             </ul>
-       </div>
+        </div>
         <div class="admin-bread">
              <%
               if(user == null){
              %>
-              <span>您好，请先登录</span>
+            <span>您好，请先登录</span>
             <%
-               }else{
-            %>
-            <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
-            <%
-                }
-            %>
+              }else{
+             %>
+             <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
+             <%
+              }
+              %>
             <ul class="bread">
-               <li><a href="index.jsp" class="icon-home"> 开始</a></li>
-               <li><a href="users-search.jsp">用户</a></li>
-               <li>添加</li>
+                <li><a href="home.jsp" class="icon-home"> 开始</a></li>
+                <li><a href="users-search.jsp">用户</a></li>
+                <li>添加</li>
             </ul>
         </div>
     </div>
@@ -167,25 +168,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="tab-panel active" id="tab-set">
         	<form action="addUser" method="post" class="form-x" enctype="multipart/form-data">
    			 <div style="width:100%">
-				<div class="form-group1" style="float:left;;width:16em">
+				<div class="form-group1" style="float:left;;width:17em">
                 	<p>用户ID <input style="float:right" type="text" name="user.userId" id="id" onblur="checkId(this.value);"/></p>	    
  				    <p>密码<input style="float:right" type="password" name="user.password" id="pass"/></p>                                                                   
-                    <p>邮箱 <input id="email" style="float:right" type="text" name="user.email" onblur="checkEmail(this.value);"/></p> 			    				    				 
+                    <p>头像<input style="float:right" type="file" name="upload" /></p>                   
                 </div>
                 
-                <div class="form-group2" style="float:left;position:relative;width:16em;margin-left:2em;">  
+                <div class="form-group2" style="float:left;position:relative;width:17em;margin-left:3em;">  
                     <p>昵称<input style="float:right" type="text" name="user.nick" id="nick"/></p>             	
- 				    <p>联系方式<input id="tel" style="float:right" type="text" name="user.telephone" onblur="checkTel(this.value);"/></p>	
- 				    <p>头像<input style="float:right; margin-left:5em; width: 12em;" type="file" name="upload" /></p>                   			      
+ 				    <p>联系方式<input id="tel" style="float:right" type="text" name="user.telephone" onblur="checkTel(this.value);"/></p>				    
+ 				    <p>邮箱 <input id="email" style="float:right" type="text" name="user.email" onblur="checkEmail(this.value);"/></p> 			    				    				    
                 </div>
                 
-                <div class="form-group3" style="float:left;position:relative;width:16em;margin-left:2em;">
+                <div class="form-group3" style="float:left;position:relative;width:17em;margin-left:3em;">
                 	<p>住址 <input style="float:right" type="text" name="user.address" /></p>
                 	<p>余额 <input style="float:right" type="text" name="user.balance" value="0.0"/></p>  
                 	           	                                                    
                 </div>     
                 
-                <div class="form-group4" style="float:left;position:relative;width:16em;margin-left:2em;">                 	
+                <div class="form-group4" style="float:left;position:relative;width:17em;margin-left:3em;">                 	
                 	<p>用户等级
                 	    <select style="float:right;width:11.2em" name="user.vip">
                            <option value="0" >管理员</option> 
@@ -203,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
               
              <input style="float:left;margin-top:4em;width:8em;height:2.5em;background:#F30;color:#FFF;font-size:1em;border:none;border-radius:5px" 
-                      type="submit" value="添加" />
+                      type="submit" value="添加" onclick="return check();"/>
              </form>
            </div>
         

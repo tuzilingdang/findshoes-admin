@@ -29,18 +29,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <style>
 		.td-url{/*text-overflow:ellipsis;*/white-space:nowrap;overflow: hidden}
 	</style>
-  
+
+    
 </head>
 
 <body>
+
+
+
 <div class="lefter">
-    <div class="logo"><a style="font-size:large"><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
         <div class="admin-navbar">
             <span class="float-right">
-            	<a class="button button-little bg-main" href="#">前台首页</a>
+            	<!-- <a class="button button-little bg-main" >前台首页</a> -->
                 <a class="button button-little bg-yellow" href="login.html">注销登录</a>
             </span>
             <ul class="nav nav-inline admin-nav">
