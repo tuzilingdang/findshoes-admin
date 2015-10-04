@@ -78,7 +78,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!-- <input type="button" class="button button-small checkall" name="checkall" checkfor="id" value="全选" /> -->
             <a  class="button button-small border-green" href="article-add.jsp" target="#">添加文章</a>
         </div>
-        <div style="font-size:2em;font-family:Microsoft YaHei; color:#FF6600;margin-left:15em;"><span>添加成功</span></div>
+        <div style="font-size:3rem;font-family:Microsoft YaHei; color:#FF6600;margin-left:15em;"><span>添加成功</span></div>
+        <a  class="button button-small border-green" href="shoes-add.jsp" target="#">
+        	<div style="font-size:1em;font-family:Microsoft YaHei; color:#666;margin-left:15em;"><span>返回</span></div>
+        </a>
         <div class="formtitle"></div>
         <table class="table table-hover" style="table-layout:fixed">
         	<tr><th width="50">文章ID</th><th width="30">类型</th><th width="*">名称</th><th width="*">内容</th><th width="100">时间</th></tr>

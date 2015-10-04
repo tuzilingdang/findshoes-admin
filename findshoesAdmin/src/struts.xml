@@ -51,7 +51,7 @@
 	        </action> 
      
      	<action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
-         <result name="success">/shoes-succ.jsp</result>
+         <result name="success">/shoesadd-succ.jsp</result>
          <result name="error">/shoes-add.jsp</result>
      </action>
      
