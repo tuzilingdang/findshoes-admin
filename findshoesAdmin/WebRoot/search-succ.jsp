@@ -237,6 +237,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"> 
   function goFirst(){
+  	document.getElementById("input1").value= parseInt(1);
+	document.getElementById("input2").value= parseInt(1)+parseInt(1);
+	document.getElementById("input3").value= parseInt(1)+parseInt(2);
+	document.getElementById("input4").value= parseInt(1)+parseInt(3);
+	document.getElementById("input5").value= parseInt(1)+parseInt(4);
   	goPage(1);
   }
   function goEnd(){
@@ -245,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		var pageNo = Math.floor(parseInt(num)/10) ;
   	if (parseInt(num)%10 !=0)
   		var pageNo = Math.floor(parseInt(num)/10) +1;
-  		alert(pageNo);
+  		//alert(pageNo);
   		goPage(pageNo);
   }
 		
@@ -261,15 +266,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				dataType:"json",
 				data:{"array":array,"val":val},
 				success:function(string){
-					alert("select Change ajax success");
+					//alert("select Change ajax 成功");
 					 goPage(num);
 				   /*  window.self.location = "search-succ.jsp";   */
 				/*  window.location.reload();   */
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
-					        alert(XMLHttpRequest.status);
+					      /*   alert(XMLHttpRequest.status);
 	                        alert(XMLHttpRequest.readyState);
-	                        alert(textStatus);
+	                        alert(textStatus); */
 				}
 			}); 	
 	}
@@ -303,7 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var flag =false;
 			if(src == 1){
 				array =  document.getElementById("goodsId").value;
-				alert(array);
+				//alert(array);
 			}
 			if(src == 2){
 				$(".deleck").each(function(){
@@ -334,15 +339,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				dataType:"json",
 				data:{"array":array},
 				success:function(){
-				/* 	alert("ajax success");   */
+				 	/* alert("ajax success");    */
 				    /*  window.reload();   */
 				    goPage(num);
 				    
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){
-					        alert(XMLHttpRequest.status);
+					     /*    alert(XMLHttpRequest.status);
 	                        alert(XMLHttpRequest.readyState);
-	                        alert(textStatus);
+	                        alert(textStatus); */
 				}
 			}); 
 		}
@@ -351,7 +356,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function goPage(num){
 			if(num == 1){
 			 var pstPageNo = document.getElementById("input1").value;
-			 alert(pstPageNo);
+			 	//alert(document.getElementById("input1").value);
+
+			 //alert(pstPageNo);
 			}
 				
 			else if(num == 2)

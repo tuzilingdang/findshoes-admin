@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div class="lefter">
-    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><a style="font-size:large"  target="_blank"><strong>女鞋后台管理系统</strong></a></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
@@ -145,14 +145,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 
                <div class="form-group4" style="float:left;position:relative;width:16em;margin-left:2.5em;">
-                	<p>季节 <select style="float:right;width:11.2em" name="shSeason" disabled>
- 							<option value="">无</option> <option value="春季">春季</option> <option value="秋季">秋季</option><option value="夏季">夏季</option> <option value="冬季">冬季</option>        
-					</select></p>   
+                    <p>季节 <select class="data" style="float:right;width:11.2em" name="shSeason">
+ 							<option value="">无</option> <option value="春季">春季</option> <option value="夏季">夏季</option><option value="秋季">秋季</option> <option value="冬季">冬季</option>                     
+					</select></p>    
                 	<!-- <p>内里材质 <input class="data" style="float:right" type="text" name="shInnerMaterial" value="" /></p> -->
- 				    <p>制作工艺
+<!--  				    <p>制作工艺
                     	<select  style="float:right;width:11.2em"><option >无</option> <option value="胶黏鞋">胶黏鞋</option> <option value="手工缝制">手工缝制</option>
                         <option value="硫化鞋">硫化鞋</option>
-                        </select></p></p>	</p>
+                        </select></p></p>	</p> -->
                     <p>帮面材质 <input class="data" style="float:right" type="text"  name="shUpperMaterial" value="" /></p>
                 </div> 
                 
@@ -275,18 +275,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        alert(textStatus);
 				}
 			});  
-	}
-
-
-	function GoPage(Myself)
-	{
-		var Lmyself=Myself.replace(".html","")
-		if (document.formpage.SkipPage.value == 1)
-			{window.location.href=Myself;} //绝对路径可自己设置
-		else{
-			window.location.href=Lmyself+"_"+document.formpage.SkipPage.value+".html";
 		}
-	}
+
+
+		function GoPage(Myself)
+		{
+			var Lmyself=Myself.replace(".html","")
+			if (document.formpage.SkipPage.value == 1)
+				{window.location.href=Myself;} //绝对路径可自己设置
+			else{
+				window.location.href=Lmyself+"_"+document.formpage.SkipPage.value+".html";
+			}
+		}
 	
 	
 </SCRIPT>

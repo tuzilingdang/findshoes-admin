@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
+<%@page import="com.model.Users"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -97,34 +99,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body onload="chgStatus()">
 <div class="lefter">
-    <div class="logo"><a style="font-size:large" href="index.jsp" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
+    <div class="logo"><a style="font-size:large" href="http://www.pintuer.com" target="_blank"><strong>女鞋后台管理系统</strong></a></div>
 </div>
 <div class="righter nav-navicon" id="admin-nav">
     <div class="mainer">
-         <div class="admin-navbar">
+        <div class="admin-navbar">
             <span class="float-right">
             	<!-- <a class="button button-little bg-main" >前台首页</a> -->
-                <a class="button button-little bg-yellow" href="login.html">注销登录</a>
+                 <%
+            	    Users user = (Users)ActionContext.getContext().getSession().get("loginUser");
+            	    if(user==null){
+            	   %>
+                    <a class="button button-little bg-yellow" href="login.jsp">登录</a>
+                   <%
+                   }else{
+                  %>
+                    <a class="button button-little bg-yellow" href="userLogout">注销</a>
+                  <%
+                    }
+                  %>
             </span>
-            <ul class="nav nav-inline admin-nav"  >
+            <ul class="nav nav-inline admin-nav">
                 <li><a href="index.jsp" class="icon-home"> 开始</a>
                 <!-- <li><a href="system.jsp" class="icon-home"> 系统</a> -->
-               <!--  <li><a href="home.jsp" class="icon-file-text"> 首页</a> -->
-                <li class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
-            		<ul><li><a href="shoes-search.jsp">鞋子搜索</a></li><li  class="active"><a href="shoes-add.jsp">添加</a></li><li><a href="shoes-batchadd.jsp">批量添加</a></li></ul>
+                </li>            
+               <!-- <li><a href="home.jsp" class="icon-file-text"> 首页</a>  -->
+                <li   class="active"><a href="shoes-search.jsp" class="icon-cog"> 鞋子</a>
+            		<ul><li   class="active"><a href="shoes-search.jsp">鞋子搜索</a></li>
+            			<li><a href="shoes-add.jsp">添加</a></li>
+            			<li><a href="shoes-batchadd.jsp">批量添加</a></li>
+            		</ul>
                 </li>
-                <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li>
-                <li><a href="article.jsp" class="icon-file-text"> 文章</a></li>
-                <li><a href="#" class="icon-user"> 商店</a></li>
-                <li><a href="#" class="icon-file">用户</a></li>
+               <!--  <li><a href="classify.jsp" class="icon-file-text"> 分类条件</a> </li> -->
+                <li><a href="article.jsp" class="icon-cog"> 文章</a>
+            	
+                <!-- <li><a href="store-err.jsp" class="icon-user"> 商店</a></li> -->
+                <li><a href="users-search.jsp" class="icon-file">用户</a></li>
             </ul>
-        </div>
-        <div class="admin-bread" style="margin-left:1.5em">
-            <span>您好，admin，欢迎您的光临。</span>
+       </div>
+        <div class="admin-bread">
+             <%
+              if(user == null){
+             %>
+              <span>您好，请先登录</span>
+            <%
+               }else{
+            %>
+            <span>您好，<%= user.getUserId() %>，欢迎您的光临。</span>
+            <%
+                }
+            %>
             <ul class="bread">
-                <li><a href="index.html" class="icon-home"> 开始</a></li>
-                <li><a href="system.html">鞋子</a></li>
-                <li>鞋子搜索</li>
+                <li><a href="index.jsp" class="icon-home"> 开始</a></li>
+                <li><a href="shoes-search.jsp">鞋子</a></li>
+                <li>鞋子详情</li>
             </ul>
         </div>
     </div>
@@ -298,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				type:"post",
 				dataType:"json",
 				data:{"name":name,"val":val,"goodsId":goodsId},
-				success:function(string){
+				success:function(data){
 					alert("修改成功");
 					 /* goPage(num); *//* goodsDetail.action?gid=<s:property value="shoes.goodsId" /> */
 				   /*  window.self.location = "search-succ.jsp";   */

@@ -51,11 +51,7 @@
 	        </action> 
      
      	<action name ="addShoe" class ="com.action.shoesAction" method="addShoe" >         
-<<<<<<< HEAD
-         <result name="success">/shoesadd-succ.jsp</result>
-=======
          <result name="success">/shoes-succ.jsp</result>
->>>>>>> april
          <result name="error">/shoes-add.jsp</result>
      </action>
      
@@ -99,9 +95,9 @@
 	        <result name="success" type="json"></result>
 	    </action>
 	    
-	    <action name ="shoespubChg" class ="com.action.chgPublishAction" method="shoespubChg">
+ 	    <action name ="shoespubChg" class ="com.action.chgPublishAction" method="shoespubChg">
 	        <result name="success" type="json"></result>
-	    </action>
+	    </action> 
 	    
 	   <action name ="searchGoods" class ="com.action.goodsAction" method="searchGoods" >         
          <result name="success" type="json"></result>

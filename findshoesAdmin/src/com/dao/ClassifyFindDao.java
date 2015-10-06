@@ -33,6 +33,11 @@ public class ClassifyFindDao extends BaseHibernateDAO{
 				System.out.println("goPage here the question ");
 				System.out.println("goPage here the question keys= "+keys);
 				System.out.println("goPage here the question map.keySet()= "+map.keySet());
+				if(keys.equals("shSeason")){
+					System.out.println("ckSeason,为null  == ");
+				}
+				else
+					System.out.println("ckSeason,ERROR ");
 				
 				if(keys.equals("shGoodsid")){
 					List<Shoes> shoesQlist = new ArrayList();
@@ -79,7 +84,7 @@ public class ClassifyFindDao extends BaseHibernateDAO{
 					
 					//已经获得了ckBrand的所有，可以去寻找鞋子列表了
 					String hql = "from Shoes as shoes where ";
-						hql += "shoes.brand= '"+s+"' ";
+						hql += "shoes.brand like '"+s+"' ";
 					
 					System.out.println(hql);  //hql ok
 					Query queryObject = getSession().createQuery(hql);
@@ -631,7 +636,6 @@ public class ClassifyFindDao extends BaseHibernateDAO{
 						else if(s.equals("冬季"))
 							ss[0]="冬";
 					
-					
 					//要判断一下 shoesList 为不为 null，如果是 null，则要查数据库重新获取shoesList
 					if(shoesList!=null){
 						//这里可以直接筛选鞋子
@@ -691,7 +695,7 @@ public class ClassifyFindDao extends BaseHibernateDAO{
 							}
 						
 						
-//						System.out.println("ckSeason,为null  == "+hql);
+						System.out.println("ckSeason,为null  == "+hql);
 						Query queryObject = getSession().createQuery(hql);
 						queryObject = getSession().createQuery(hql);
 						shoesQlist = queryObject.list();
